@@ -763,6 +763,8 @@ function addResizeHandle(el) {
    PHOTO LAYOUT — scatter photos left/right, no overlaps
    ========================================================= */
 function initPhotoLayout() {
+  if (window.innerWidth < 900) return;  // leave photos in their HTML containers on mobile
+
   const EDGE = 18;  // px from viewport edge
   const GAP  = 80;  // safety gap if an image is taller than expected
 
