@@ -86,7 +86,7 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 
 - [x] make the some of the work part into things on the page - that are interactive and like easter egg hidden- so when clicked story is told or something - based on interactions of game or whatever you think makes sense. — implemented: click any work card to flip it and reveal a "behind the scenes" story; click "tap to flip back" to return.
 
-- [ ] what gets me going is fine - make it more cool just a bit (use only a litlle time on this)
+- [x] what gets me going is fine - make it more cool just a bit (use only a litlle time on this)
 
 - [x] make the email triggers work — implemented via FormSubmit.co (no account needed; one-time activation email sent to mathiastougaard99@gmail.com on first submission). Both contact form and padel form now deliver real emails.
 

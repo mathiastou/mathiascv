@@ -590,7 +590,28 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
 
 .do-card:hover::before { transform: scaleX(1); }
 
-.do-icon { font-size: 2.5rem; margin-bottom: var(--space-sm); line-height: 1; }
+/* Amber glow wash on hover */
+.do-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,158,11,0.08) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  z-index: 0;
+}
+.do-card:hover::after { opacity: 1; }
+.do-card > * { position: relative; z-index: 1; }
+
+.do-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-sm);
+  line-height: 1;
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
+}
+.do-card:hover .do-icon { transform: scale(1.25) rotate(-6deg); }
 
 .do-num {
   font-family: var(--font-display);
@@ -602,7 +623,14 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
   margin-bottom: 6px;
 }
 
-.do-card h3 { font-family: var(--font-display); font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-sm); }
+.do-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  transition: color 0.25s;
+}
+.do-card:hover h3 { color: var(--accent); }
 .do-card p { font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.7; font-weight: 300; }
 
 /* ---- MORE Logo Decorative (Flappy Bird trigger) ---- */
