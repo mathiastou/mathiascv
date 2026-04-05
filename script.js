@@ -564,6 +564,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* -------------------------------------------------------
+     M-1: Work "show more" toggle — reveals extra hidden cards
+     ------------------------------------------------------- */
+  const workMoreBtn   = document.getElementById('workMoreBtn');
+  const extraCards    = document.querySelectorAll('.work-card--extra');
+
+  if (workMoreBtn && extraCards.length) {
+    workMoreBtn.addEventListener('click', () => {
+      const isOpen = workMoreBtn.getAttribute('aria-expanded') === 'true';
+
+      if (!isOpen) {
+        // Reveal: set display:block first, then trigger animation next frame
+        extraCards.forEach((card, i) => {
+          card.style.display = 'block';
+          // stagger reveal with a small delay per card
+          setTimeout(() => card.classList.add('is-revealed'), 30 + i * 60);
+        });
+        workMoreBtn.setAttribute('aria-expanded', 'true');
+      } else {
+        // Hide
+        extraCards.forEach(card => {
+          card.classList.remove('is-revealed', 'is-flipped');
+          const back = card.querySelector('.work-card-back');
+          if (back) back.setAttribute('aria-hidden', 'true');
+          // wait for CSS transition, then actually hide
+          card.addEventListener('transitionend', function handler() {
+            card.style.display = 'none';
+            card.removeEventListener('transitionend', handler);
+          });
+        });
+        workMoreBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
 
   /* -------------------------------------------------------
      M: Liverpool — draggable + YNWA animation

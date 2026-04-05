@@ -1006,6 +1006,47 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
 }
 .work-card-back-close:hover { opacity: 1; }
 
+/* Work extra cards — hidden until expanded */
+.work-card--extra {
+  display: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.work-card--extra.is-revealed {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* "there's more" toggle button */
+.work-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-lg);
+}
+.work-more-btn {
+  background: none;
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: 2rem;
+  color: rgba(245,158,11,0.7);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  padding: 0.45rem 1.2rem;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.work-more-btn:hover {
+  border-color: rgba(245,158,11,0.6);
+  color: var(--accent);
+  background: rgba(245,158,11,0.05);
+}
+.work-more-btn .work-more-label-open { display: none; }
+.work-more-btn[aria-expanded="true"] .work-more-label { display: none; }
+.work-more-btn[aria-expanded="true"] .work-more-label-open { display: inline; }
+
 /* =============================================
    HUMAN
    ============================================= */

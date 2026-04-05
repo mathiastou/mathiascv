@@ -111,4 +111,6 @@ do mobile check again - like does it work on other screen sizes (quick check)
 Based on the important tasks - anything else you need to revisit?
 
 ##
-Hide some of the work - so it hidden somewhere to be expandend - remove the follow cursor animation on it
+- [x] Hide some of the work - so it hidden somewhere to be expandend - remove the follow cursor animation on it — done: last 2 work cards (HYPEDROP + Replenishment) hidden behind a "there's more ↓" toggle; reveals with fade-in. Removed magnetic cursor-follow from all work cards.
+
+I dont like the animation on the icons in what gets me going - that does work - do someelse - make just something happens when you click the icons or in the area something happens with the icons - differrently in each of the 3 areas.
