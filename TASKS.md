@@ -25,7 +25,7 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 ## Performance
 
 - [x] **Lazy-load all images** — audit `index.html`, ensure every `<img>` except the hero profile has `loading="lazy"`. Hero (`profileimage2022.jpg`) should stay `loading="eager"`.
-- [ ] **Compress images** — several PNGs are 400–1000KB. Run through a lossless compressor (e.g. pngquant or squoosh). Target: all images under 200KB. Do not alter filenames.
+- [x] **Compress images** — several PNGs are 400–1000KB. Run through a lossless compressor (e.g. pngquant or squoosh). Target: all images under 200KB. Do not alter filenames.
 - [ ] **Preload hero image** — add `<link rel="preload" as="image" href="profileimage2022.jpg">` in `<head>` to eliminate LCP delay.
 - [ ] **Defer script** — add `defer` attribute to `<script src="script.js">` so it doesn't block HTML parsing.
 - [ ] **Font display swap** — add `&display=swap` to the Google Fonts URL if not already present (it is, confirm it stays).
