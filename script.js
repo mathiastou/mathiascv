@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
      A: Cursor + Smoke Trail
      ------------------------------------------------------- */
   const dot    = document.querySelector('.cursor-dot');
-  const canvas = document.getElementById('smokeCanvas');
+  const isTouchDevice = 'ontouchstart' in window;
+  const canvas = isTouchDevice ? null : document.getElementById('smokeCanvas');
   const ctx    = canvas ? canvas.getContext('2d') : null;
   let mouseX   = window.innerWidth  / 2;
   let mouseY   = window.innerHeight / 2;
@@ -58,15 +59,17 @@ document.addEventListener('DOMContentLoaded', () => {
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    // Spawn only if under the cap — keeps it smooth on slower machines
-    if (ctx && particles.length < MAX_PARTICLES) {
-      spawnParticle(mouseX, mouseY);
-      spawnParticle(mouseX, mouseY);
-    }
-  });
+  if (!isTouchDevice) {
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      // Spawn only if under the cap — keeps it smooth on slower machines
+      if (ctx && particles.length < MAX_PARTICLES) {
+        spawnParticle(mouseX, mouseY);
+        spawnParticle(mouseX, mouseY);
+      }
+    });
+  }
 
   function spawnParticle(x, y) {
     particles.push({
