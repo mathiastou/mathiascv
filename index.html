@@ -360,9 +360,13 @@
 
           <div class="contact-form-wrap glass-card reveal-up" data-delay="0.2">
             <!--
-              SETUP: formspree.io → create form → replace REPLACE_WITH_FORMSPREE_ID
+              Email via FormSubmit.co — no account needed.
+              First submission triggers a one-time activation email to mathiastougaard99@gmail.com.
+              Click the confirmation link once, then all future submissions are delivered.
             -->
-            <form class="contact-form" id="contactForm" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST" novalidate>
+            <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/mathiastougaard99@gmail.com" method="POST" novalidate>
+              <input type="hidden" name="_subject" value="New message from your CV 👋" />
+              <input type="hidden" name="_captcha" value="false" />
               <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required />
@@ -418,8 +422,9 @@
         <h3>Challenge me to a padel game</h3>
         <p>Drop your name and a message — winner buys drinks.</p>
       </div>
-      <form class="padel-form" id="padelForm" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+      <form class="padel-form" id="padelForm" action="https://formsubmit.co/ajax/mathiastougaard99@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="Padel challenge! 🎾" />
+        <input type="hidden" name="_captcha" value="false" />
         <div class="padel-field">
           <input type="text" name="name" placeholder="Your name" required autocomplete="off" />
         </div>

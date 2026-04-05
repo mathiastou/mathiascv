@@ -430,12 +430,13 @@ document.addEventListener('DOMContentLoaded', () => {
     padelStatus.className = 'padel-status';
     padelStatus.textContent = '';
     try {
-      const res = await fetch(padelForm.action, {
+      const res  = await fetch(padelForm.action, {
         method: 'POST',
         body: new FormData(padelForm),
         headers: { Accept: 'application/json' },
       });
-      if (res.ok) {
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success === 'true') {
         padelStatus.textContent = '🎾 Challenge sent! I\'ll hit you back.';
         padelStatus.className = 'padel-status success';
         padelForm.reset();
@@ -554,12 +555,20 @@ document.addEventListener('DOMContentLoaded', () => {
     stat.className   = 'form-status';
 
     try {
-      const res = await fetch(form.action, {
+      const fd = new FormData();
+      fd.append('name',     name);
+      fd.append('email',    email);
+      fd.append('message',  message);
+      fd.append('_subject', 'New message from your CV 👋');
+      fd.append('_captcha', 'false');
+
+      const res  = await fetch(form.action, {
         method: 'POST',
-        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message }),
+        headers: { Accept: 'application/json' },
+        body: fd,
       });
-      if (res.ok) {
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success === 'true') {
         stat.textContent = '✓ Sent. Talk soon.';
         stat.className   = 'form-status success';
         form.reset();
@@ -849,8 +858,9 @@ function initPhotoLayout() {
     _photoParents = new Map(els.map(el => [el, { parent: el.parentElement, next: el.nextElementSibling }]));
   }
 
-  // Pre-clear the transform on MORE so place() measures its natural height
-  if (moreBtn) moreBtn.style.transform = 'none';
+  // Pre-clear the transform on MORE so place() measures its natural height,
+  // then switch to CSS class which restores the hover scale without translateY(-50%).
+  if (moreBtn) { moreBtn.style.transform = 'none'; moreBtn.classList.remove('is-body-placed'); }
 
   // RIGHT side — hero, Greece, Belgium, Liverpool (all via place() for accurate heights)
   // ~80px   — top of #hero section; sits beside the hero name/subtitle
@@ -869,6 +879,8 @@ function initPhotoLayout() {
   place(guitar,      1200,  false);
   // ~1900px — mid #human section; MORE logo button (click to open Flappy Bird)
   place(moreBtn,     1900,  false);
+  // Switch to class-based transform so hover scale works without translateY(-50%)
+  if (moreBtn) { moreBtn.style.transform = ''; moreBtn.classList.add('is-body-placed'); }
   // ~2700px — bottom of #human section; France photo
   place(jPhotos[1],  2700,  false);
   // ~3500px — above #contact; Jyllandsringen driving photo

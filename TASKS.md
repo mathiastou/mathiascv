@@ -55,8 +55,8 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 
 - [x] **Remove unused CSS** — `style.css` is 34KB. Audit for rules that no longer match any HTML (e.g. old `.now-playing`, `.yt-*` YouTube remnants if any remain). Remove them.
 - [x] **Consolidate duplicate transitions** — several elements define `transition: transform 0.3s, opacity 0.3s` inline. Move to CSS classes.
-- [x] **`initPhotoLayout` wantedTop values** — the hardcoded pixel offsets (80, 870, 1750, etc.) are tied to the current content height. Add a comment block above each group explaining what section they roughly align with, so future edits are easier.
-- [x] **`_photoZ` counter** — currently a global. Scope it inside `makeDraggable` closure or a module pattern to avoid accidental overwrite.
+- [ ] **`initPhotoLayout` wantedTop values** — the hardcoded pixel offsets (80, 870, 1750, etc.) are tied to the current content height. Add a comment block above each group explaining what section they roughly align with, so future edits are easier.
+- [ ] **`_photoZ` counter** — currently a global. Scope it inside `makeDraggable` closure or a module pattern to avoid accidental overwrite.
 
 ---
 
@@ -66,29 +66,45 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
   - Main contact form (`#contactForm`)
   - Padel challenge form (`#padelForm`)
   - Create a free account at formspree.io and use the generated form endpoint.
-- [x] **Beer card click** — `#beerCard` has no click interaction. Consider: click opens a short fun fact or a toast notification ("It was a pale ale. 7.2%. Would recommend.").
-- [x] **Drums card click** — `#drumsCard` similarly has no interaction. Could trigger a short drum-roll sound or a tooltip.
-- [x] **OG / social meta tags** — add `<meta property="og:title">`, `og:description`, `og:image` (use `profileimage2022.jpg`) in `<head>` for better link previews when shared.
-- [x] **Favicon** — no favicon is set. Add a simple one (could be the ☕ emoji rendered as SVG) via `<link rel="icon">` in `<head>`.
+- [ ] **Beer card click** — `#beerCard` has no click interaction. Consider: click opens a short fun fact or a toast notification ("It was a pale ale. 7.2%. Would recommend.").
+- [ ] **Drums card click** — `#drumsCard` similarly has no interaction. Could trigger a short drum-roll sound or a tooltip.
+- [ ] **OG / social meta tags** — add `<meta property="og:title">`, `og:description`, `og:image` (use `profileimage2022.jpg`) in `<head>` for better link previews when shared.
+- [ ] **Favicon** — no favicon is set. Add a simple one (could be the ☕ emoji rendered as SVG) via `<link rel="icon">` in `<head>`.
 
 ---
 
 ## Bugs / Polish
 
 - [x] **Photo layout on window resize** — photos are placed once on `window.load`. If the user resizes the window, positions become wrong. Add a debounced `window.addEventListener('resize', ...)` that re-runs `initPhotoLayout()` only if viewport width crosses the 900px mobile threshold.
-- [ ] **Scroll restoration** — if the page is refreshed mid-scroll, photos re-initialize at their default positions which may look odd. Acceptable as-is, but worth noting.
-- [ ] **MORE button `transform: none`** — `initPhotoLayout` sets `transform: none` on `#moreLogoBig` to cancel any CSS default. Confirm this doesn't break the hover scale effect defined in CSS (`.more-logo-decor:hover`). If hover is broken, use `transform: scale(1)` as the base instead.
-- [ ] **Liverpool sticker tilt** — uses `--rot: -6deg` CSS variable. After `initPhotoLayout` appends it to body, verify the variable is still respected (it should be since it's an inline style, but confirm visually).
+- [x] **Scroll restoration** — acceptable as-is; noted.
+- [x] **MORE button `transform: none`** — fixed: added `.is-body-placed` CSS class applied after `place()`. Class sets `transform: scale(1)` / `scale(1.05)` on hover without the broken `translateY(-50%)`.
+- [x] **Liverpool sticker tilt** — verified: `--rot: -6deg` survives `place()` (which never touches transform). CSS and makeDraggable both read it correctly.
 
 
 ## IMPORTANT other tasks: 
 - [x] reomve the story so far prat- to CV like- they can look that shit up in linkedin. 
 
-make the some of the work part into things on the page - that are interactive and like easter egg hidden- so when clicked story is told or something - based on interactions of game or whatever you think makes sense. 
+- [ ] make the some of the work part into things on the page - that are interactive and like easter egg hidden- so when clicked story is told or something - based on interactions of game or whatever you think makes sense. 
 
-what gets me going is fine - make it more cool just a bit
+- [ ] what gets me going is fine - make it more cool just a bit
 
-make the email triggers work - so both when hitting up to build someething email is actually sent. 
+- [x] make the email triggers work — implemented via FormSubmit.co (no account needed; one-time activation email sent to mathiastougaard99@gmail.com on first submission). Both contact form and padel form now deliver real emails.
 
-and when you can book a padel match it actually also sends a email... 
+- [x] and when you can book a padel match it actually also sends a email... — done, same FormSubmit.co endpoint. 
 
+
+## other imporant other tasks:
+the linkedin id should not be displayed on the page - just linking to linkedin. 
+
+I like linkedin park - maybe implement that joke somehow when linkin park song is playing
+
+the image resizing is not really clear unless you know it is opssible - maybe change the color of the resize button or make it clearer in some other way. 
+
+maybe mix the images around so it just not all images if me in the beginning together with my name - like i know it is my cv page - but it is a lot of me hehe
+
+
+##
+do mobile check again - like does it work on other screen sizes
+
+## 
+Based on the important tasks - anything else you need to revisit?

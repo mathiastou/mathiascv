@@ -629,6 +629,15 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
   transform: translateY(-50%) scale(1.05);
 }
 
+/* Once initPhotoLayout places the button on body, the translateY(-50%) is no longer
+   needed (top is set to a fixed px value). This class restores the hover scale. */
+.more-logo-decor.is-body-placed {
+  transform: scale(1);
+}
+.more-logo-decor.is-body-placed:hover {
+  transform: scale(1.05);
+}
+
 .more-logo-decor img { width: 100%; height: auto; display: block; pointer-events: none; }
 .more-logo-label {
   display: block;
