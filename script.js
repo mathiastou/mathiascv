@@ -705,10 +705,12 @@ function showYNWA() {
 
 /* =========================================================
    UTILITY: Make Draggable
+   _photoZ is scoped inside the IIFE to prevent accidental
+   global overwrites from unrelated code.
    ========================================================= */
-let _photoZ = 50;
-
-function makeDraggable(el) {
+const makeDraggable = (() => {
+  let _photoZ = 50;
+  return function makeDraggable(el) {
   let dragging = false, moved = false;
   let ox = 0, oy = 0, startCX = 0, startCY = 0;
 
@@ -770,7 +772,8 @@ function makeDraggable(el) {
     if (dragging) { e.preventDefault(); drag(e.touches[0].clientX, e.touches[0].clientY); }
   }, { passive: false });
   document.addEventListener('touchend', drop);
-}
+  };
+})();
 
 function addResizeHandle(el) {
   const h = document.createElement('div');
