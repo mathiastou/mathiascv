@@ -494,6 +494,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* -------------------------------------------------------
+     M-0: Work card flip — click to reveal behind-the-scenes story
+     ------------------------------------------------------- */
+  document.querySelectorAll('.work-card').forEach(card => {
+    const back  = card.querySelector('.work-card-back');
+    const close = card.querySelector('.work-card-back-close');
+
+    card.addEventListener('click', () => {
+      if (card.classList.contains('is-flipped')) return;
+      card.classList.add('is-flipped');
+      if (back) back.removeAttribute('aria-hidden');
+    });
+
+    close?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      card.classList.remove('is-flipped');
+      if (back) back.setAttribute('aria-hidden', 'true');
+    });
+  });
+
+
+  /* -------------------------------------------------------
      M: Liverpool — draggable + YNWA animation
      ------------------------------------------------------- */
   const liverpoolSticker = document.getElementById('liverpoolSticker');

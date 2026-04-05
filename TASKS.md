@@ -55,8 +55,8 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 
 - [x] **Remove unused CSS** — `style.css` is 34KB. Audit for rules that no longer match any HTML (e.g. old `.now-playing`, `.yt-*` YouTube remnants if any remain). Remove them.
 - [x] **Consolidate duplicate transitions** — several elements define `transition: transform 0.3s, opacity 0.3s` inline. Move to CSS classes.
-- [ ] **`initPhotoLayout` wantedTop values** — the hardcoded pixel offsets (80, 870, 1750, etc.) are tied to the current content height. Add a comment block above each group explaining what section they roughly align with, so future edits are easier.
-- [ ] **`_photoZ` counter** — currently a global. Scope it inside `makeDraggable` closure or a module pattern to avoid accidental overwrite.
+- [x] **`initPhotoLayout` wantedTop values** — the hardcoded pixel offsets (80, 870, 1750, etc.) are tied to the current content height. Add a comment block above each group explaining what section they roughly align with, so future edits are easier.
+- [x] **`_photoZ` counter** — currently a global. Scope it inside `makeDraggable` closure or a module pattern to avoid accidental overwrite.
 
 ---
 
@@ -66,10 +66,10 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
   - Main contact form (`#contactForm`)
   - Padel challenge form (`#padelForm`)
   - Create a free account at formspree.io and use the generated form endpoint.
-- [ ] **Beer card click** — `#beerCard` has no click interaction. Consider: click opens a short fun fact or a toast notification ("It was a pale ale. 7.2%. Would recommend.").
-- [ ] **Drums card click** — `#drumsCard` similarly has no interaction. Could trigger a short drum-roll sound or a tooltip.
-- [ ] **OG / social meta tags** — add `<meta property="og:title">`, `og:description`, `og:image` (use `profileimage2022.jpg`) in `<head>` for better link previews when shared.
-- [ ] **Favicon** — no favicon is set. Add a simple one (could be the ☕ emoji rendered as SVG) via `<link rel="icon">` in `<head>`.
+- [x] **Beer card click** — click flies beer emojis + text changes on first click.
+- [x] **Drums card click** — click triggers bouncing notes + mini player + plays music.
+- [x] **OG / social meta tags** — added og:title, og:description, og:image, Twitter card tags.
+- [x] **Favicon** — ☕ emoji SVG favicon added via `<link rel="icon">`.
 
 ---
 
@@ -84,9 +84,9 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 ## IMPORTANT other tasks: 
 - [x] reomve the story so far prat- to CV like- they can look that shit up in linkedin. 
 
-- [ ] make the some of the work part into things on the page - that are interactive and like easter egg hidden- so when clicked story is told or something - based on interactions of game or whatever you think makes sense. 
+- [x] make the some of the work part into things on the page - that are interactive and like easter egg hidden- so when clicked story is told or something - based on interactions of game or whatever you think makes sense. — implemented: click any work card to flip it and reveal a "behind the scenes" story; click "tap to flip back" to return.
 
-- [ ] what gets me going is fine - make it more cool just a bit
+- [ ] what gets me going is fine - make it more cool just a bit (use only a litlle time on this)
 
 - [x] make the email triggers work — implemented via FormSubmit.co (no account needed; one-time activation email sent to mathiastougaard99@gmail.com on first submission). Both contact form and padel form now deliver real emails.
 
@@ -100,8 +100,9 @@ I like linkedin park - maybe implement that joke somehow when linkin park song i
 
 the image resizing is not really clear unless you know it is opssible - maybe change the color of the resize button or make it clearer in some other way. 
 
-maybe mix the images around so it just not all images if me in the beginning together with my name - like i know it is my cv page - but it is a lot of me hehe
+maybe mix the images around so it just not all images if me in the beginning together with my name - like i know it is my cv page - but it is a lot of me hehe (use only a little time on this)
 
+a lot of the time the same animation vibe is used for clicking something - like it explodes out it with tthe same image or some icon - maybe adjust try out different cool animations for show off. (use only a little time on this)
 
 ##
 do mobile check again - like does it work on other screen sizes

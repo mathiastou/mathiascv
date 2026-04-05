@@ -875,6 +875,76 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
 
 .work-card:hover .work-hover-overlay { transform: translateY(0); }
 
+/* Work card easter egg — click to reveal back story */
+.work-card { cursor: pointer; }
+
+.work-card-inner {
+  transition: opacity 0.25s ease;
+}
+
+.work-card.is-flipped .work-card-inner {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.work-card.is-flipped .work-hover-overlay {
+  transform: translateY(100%) !important;
+  pointer-events: none;
+}
+
+.work-card.is-flipped::before {
+  transform: scaleY(0) !important;
+}
+
+.work-card-back {
+  position: absolute;
+  inset: 0;
+  padding: var(--space-md) var(--space-lg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease 0.15s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(245,158,11,0.04);
+  border-left: 3px solid var(--accent);
+  z-index: 3;
+}
+
+.work-card.is-flipped .work-card-back {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.work-card-back-label {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-sm);
+}
+
+.work-card-back-story {
+  font-size: var(--text-sm);
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.work-card-back-close {
+  display: inline-block;
+  margin-top: var(--space-sm);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  opacity: 0.55;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.work-card-back-close:hover { opacity: 1; }
+
 /* =============================================
    HUMAN
    ============================================= */
