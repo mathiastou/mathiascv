@@ -36,7 +36,7 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 
 - [x] **Photo layout on mobile** — `initPhotoLayout()` in `script.js` places photos at absolute pixel positions (80px, 870px, 1750px…). On mobile these collide with section content. Add a guard: if `window.innerWidth < 900` skip `initPhotoLayout()` entirely and leave photos in their HTML containers.
 - [x] **Hero name size on small screens** — test on 375px viewport. Current clamp is `clamp(2.2rem, 8.5vw, 120px)`. If TOUGAARD still overflows, reduce the middle value to `7.5vw`.
-- [ ] **Mini player position on mobile** — `position: fixed; bottom: 24px; right: 24px` may overlap content on narrow screens. Add a media query to reduce padding/min-width below 480px.
+- [x] **Mini player position on mobile** — `position: fixed; bottom: 24px; right: 24px` may overlap content on narrow screens. Add a media query to reduce padding/min-width below 480px.
 - [ ] **Flappy Bird canvas size** — canvas is fixed size. Verify it doesn't overflow the modal on screens under 400px wide. Add `max-width: 100%` to the canvas element via CSS if needed.
 - [ ] **Smoke canvas performance on mobile** — the canvas smoke trail runs on every `mousemove`. Add a check: if `'ontouchstart' in window` skip initialising the smoke canvas entirely.
 
