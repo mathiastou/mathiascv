@@ -832,9 +832,13 @@ function initPhotoLayout() {
   const jPhotos = [...document.querySelectorAll('.journey-photos .polaroid')];
 
   // RIGHT side — hero, Greece, Belgium, Liverpool (all via place() for accurate heights)
+  // ~80px   — top of #hero section; sits beside the hero name/subtitle
   place(document.getElementById('heroPhoto'),          80,    true);
+  // ~870px  — mid #work section ("Some of the Work" cards); Greece workshop photo
   place(jPhotos[2],                                    870,   true);
+  // ~1750px — top of #human section ("Outside the Office"); Belgium workshop photo
   place(jPhotos[0],                                    1750,  true);
+  // ~2650px — bottom of #human / top of #journey; Liverpool sticker as a fun accent
   place(document.getElementById('liverpoolSticker'),   2650,  true);
 
   // Pre-clear the transform on MORE so place() measures its natural height
@@ -844,10 +848,15 @@ function initPhotoLayout() {
   const guitar = document.getElementById('musicIconBtn');
 
   // LEFT side — all items through place() so cursor stays accurate
+  // ~440px  — bottom of #hero / top of #what section; "Off the clock" collage shot
   place(collage[0],  440,   false);
+  // ~1200px — bottom of #what / top of #work section; guitar (click to play music)
   place(guitar,      1200,  false);
+  // ~1900px — mid #human section; MORE logo button (click to open Flappy Bird)
   place(moreBtn,     1900,  false);
+  // ~2700px — top of #journey section ("The Story So Far"); France photo
   place(jPhotos[1],  2700,  false);
+  // ~3500px — mid #journey / top of #contact; Jyllandsringen driving photo
   place(collage[1],  3500,  false);
 
   // Hide now-empty containers
