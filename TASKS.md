@@ -123,8 +123,8 @@ Based on the important tasks - anything else you need to revisit?
 
 - [x] some of thw work toggle does not work fix it - allign it so it looks properly. Content below the 2 topics should be undisplayed pr default — fixed: `.work-grid--collapsed { display: none; }` was being overridden by the later `.work-grid { display: grid; }` rule (equal specificity, later wins). Moved state classes after the base rule so collapse/expand now works correctly.
 
-have a look at spacing betwwen main non moveable content? is it ok? idk?
+- [x] have a look at spacing between main non moveable content — reviewed: sections use `var(--space-2xl)` (7rem) padding top/bottom, reduced to 4rem on mobile via media query. Spacing is consistent and proportional; no changes needed.
 
-on mobile more flappy bird is just placed randomly at the bottom - change it so it centered like content of its own or something- just needs to be a bit clean. 
+- [x] on mobile more flappy bird is just placed randomly at the bottom — fixed: added `@media (max-width: 900px)` override that resets `.more-logo-decor` to `position: relative; display: block; margin: 0 auto;` with 160px width, so it flows as centered content above the work grid instead of being absolutely positioned mid-section.
 
-the logo in the start saying better faster stronger more in black is reaally hard to see. adapt in a way so its not dimmed an visible.
+- [x] the logo in the start saying better faster stronger more in black is really hard to see — fixed: `mix-blend-mode: screen` with a black image on `#080808` background was rendering it invisible. Added `filter: invert(1)` (turns black → white) and raised `opacity` from 0.15 to 0.45. Now clearly readable as a subtle watermark.

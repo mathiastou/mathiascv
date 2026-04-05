@@ -436,7 +436,8 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
 .sticker-bfs {
   width: 140px;
   bottom: 8%; right: 4%;
-  opacity: 0.15;
+  opacity: 0.45;
+  filter: invert(1);
   mix-blend-mode: screen;
   pointer-events: none;
 }
@@ -1367,6 +1368,21 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
     cursor: pointer;
   }
   .music-icon-btn:hover { opacity: 1; }
+
+  /* MORE logo: on mobile JS doesn't place it on body — flow it as centered content */
+  .more-logo-decor {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    display: block;
+    width: 160px;
+    margin: 0 auto var(--space-md);
+  }
+  .more-logo-decor:hover {
+    transform: scale(1.04);
+    background: rgba(255,255,255,0.12);
+  }
 }
 
 @media (max-width: 700px) {
