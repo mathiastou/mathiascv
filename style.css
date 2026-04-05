@@ -184,17 +184,6 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
   animation: profile-wiggle 0.65s cubic-bezier(0.34,1.56,0.64,1);
 }
 
-/* ---- Hidden YouTube player ---- */
-#yt-player {
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  pointer-events: none;
-}
-
 /* ---- Background Orbs ---- */
 .bg-orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
 
@@ -565,41 +554,6 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
 
 .hero-photo .polaroid { width: 260px; }
 
-.hero-currently {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 20px;
-  position: absolute;
-  bottom: var(--space-md);
-  left: 0;
-  font-size: var(--text-xs);
-}
-
-.currently-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  flex-shrink: 0;
-  animation: pulse-ring 2.5s ease-out infinite;
-}
-
-.currently-label {
-  display: block;
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-secondary);
-  line-height: 1.2;
-}
-
-.currently-value {
-  display: block;
-  font-size: var(--text-xs);
-  font-weight: 500;
-  line-height: 1.2;
-}
-
 /* =============================================
    WHAT I DO
    ============================================= */
@@ -948,19 +902,6 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
 
-.click-hint {
-  display: inline-block;
-  margin-top: 8px;
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--accent);
-  opacity: 0.6;
-  transition: opacity var(--trans-fast);
-}
-
-.human-card--clickable:hover .click-hint { opacity: 1; }
-
 .human-card-img { width: 100%; height: 160px; overflow: hidden; flex-shrink: 0; }
 
 .human-card-img img {
@@ -1251,13 +1192,6 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
 
   .hero-section { align-items: flex-start; padding-top: 80px; }
 
-  .hero-currently {
-    position: relative;
-    bottom: auto; left: auto;
-    margin-top: var(--space-md);
-    display: inline-flex;
-  }
-
   .hero-br { display: none; }
 
   .sticky-profile { top: 16px; right: 16px; width: 58px; height: 58px; }
@@ -1297,8 +1231,7 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
   html { scroll-behavior: auto; }
   .grain { animation: none; }
   .scroll-line { animation: none; height: 48px; opacity: 0.4; }
-  .tag-pulse, .currently-dot, .avail-dot { animation: none; }
-  .np-bars span { animation: none; transform: scaleY(0.6); }
+  .tag-pulse, .avail-dot { animation: none; }
   /* Runner animation */
   .running-man { display: none !important; }
   /* Smoke canvas */

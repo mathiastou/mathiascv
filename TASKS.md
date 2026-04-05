@@ -53,7 +53,7 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 
 ## Code Quality
 
-- [ ] **Remove unused CSS** — `style.css` is 34KB. Audit for rules that no longer match any HTML (e.g. old `.now-playing`, `.yt-*` YouTube remnants if any remain). Remove them.
+- [x] **Remove unused CSS** — `style.css` is 34KB. Audit for rules that no longer match any HTML (e.g. old `.now-playing`, `.yt-*` YouTube remnants if any remain). Remove them.
 - [ ] **Consolidate duplicate transitions** — several elements define `transition: transform 0.3s, opacity 0.3s` inline. Move to CSS classes.
 - [ ] **`initPhotoLayout` wantedTop values** — the hardcoded pixel offsets (80, 870, 1750, etc.) are tied to the current content height. Add a comment block above each group explaining what section they roughly align with, so future edits are easier.
 - [ ] **`_photoZ` counter** — currently a global. Scope it inside `makeDraggable` closure or a module pattern to avoid accidental overwrite.
