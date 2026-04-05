@@ -94,7 +94,7 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 
 
 ## other imporant other tasks:
-the linkedin id should not be displayed on the page - just linking to linkedin. 
+- [x] the linkedin id should not be displayed on the page - just linking to linkedin. 
 
 I like linkedin park - maybe implement that joke somehow when linkin park song is playing
 
