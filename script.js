@@ -57,6 +57,8 @@ function setMusicState(playing) {
 /* =========================================================
    MAIN INIT
    ========================================================= */
+const TRANS_SPRING = 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1)';
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* -------------------------------------------------------
@@ -221,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     el.addEventListener('mouseleave', () => {
       el.style.transform  = '';
-      el.style.transition = 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1)';
+      el.style.transition = TRANS_SPRING;
     });
   });
 
@@ -754,7 +756,7 @@ function makeDraggable(el) {
     dragging = false;
     if (moved) el.dataset.skipClick = '1';
     el.classList.remove('is-dragging');
-    el.style.transition = 'transform 0.4s cubic-bezier(0.34,1.56,0.64,1)';
+    el.style.transition = TRANS_SPRING;
     el.style.transform  = 'rotate(var(--rot,0deg)) scale(1)';
     document.body.style.userSelect = '';
   }

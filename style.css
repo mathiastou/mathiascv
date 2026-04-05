@@ -218,7 +218,7 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
   font-size: 7rem;
   cursor: none;
   opacity: 0.55;
-  transition: opacity 0.2s, transform 0.25s;
+  transition: opacity var(--trans-fast), transform var(--trans-fast);
   line-height: 1;
   padding: 8px;
   position: absolute; /* JS sets top/right on load */
@@ -762,7 +762,7 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
   border-radius: 10px;
   padding: 14px;
   cursor: none;
-  transition: opacity 0.2s, transform 0.15s;
+  transition: opacity var(--trans-fast), transform var(--trans-fast);
   letter-spacing: 0.02em;
 }
 .padel-submit:hover { opacity: 0.85; transform: translateY(-1px); }
@@ -1153,7 +1153,7 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
   width: fit-content;
   text-decoration: none;
   opacity: 0.45;
-  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity var(--trans-med), transform var(--trans-med);
 }
 .coffee-link:hover {
   opacity: 1;
