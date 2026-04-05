@@ -119,7 +119,7 @@ Based on the important tasks - anything else you need to revisit?
 
 - [x] add sounds to more flappy bird game — done: Web Audio API generates flap (descending sine), score (two-tone chime), and die (sawtooth drop) sounds; no external audio files needed.
 
-on mobile view have the guitar placed to the right top side
+- [x] on mobile view have the guitar placed to the right top side
 
 some of thw work toggle does not work fix it - allign it so it looks properly. Content below the 2 topics should be undisplayed pr default 
 
