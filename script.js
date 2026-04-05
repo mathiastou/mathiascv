@@ -801,6 +801,10 @@ function addResizeHandle(el) {
 /* =========================================================
    PHOTO LAYOUT — scatter photos left/right, no overlaps
    ========================================================= */
+// Original parent references captured before the first layout run; used to
+// restore elements when the viewport shrinks back below the 900px threshold.
+let _photoParents = null;
+
 function initPhotoLayout() {
   if (window.innerWidth < 900) return;  // leave photos in their HTML containers on mobile
 
@@ -817,6 +821,7 @@ function initPhotoLayout() {
     // Append first so the browser can compute the real rendered height
     document.body.appendChild(el);
     el.style.position = 'absolute';
+    el.style.display  = '';          // clear any hidden state set by resetPhotoLayout
     el.style.margin   = '0';
     el.style.width    = w + 'px';
     el.style.top      = '0';
@@ -831,24 +836,31 @@ function initPhotoLayout() {
     el.style.top = top + 'px';
   }
 
-  const collage = [...document.querySelectorAll('.human-collage .collage-item')];
-  const jPhotos = [...document.querySelectorAll('.journey-photos .polaroid')];
+  const collage   = [...document.querySelectorAll('.human-collage .collage-item')];
+  const jPhotos   = [...document.querySelectorAll('.journey-photos .polaroid')];
+  const heroEl    = document.getElementById('heroPhoto');
+  const liverpool = document.getElementById('liverpoolSticker');
+  const moreBtn   = document.getElementById('moreLogoBig');
+  const guitar    = document.getElementById('musicIconBtn');
+
+  // Capture original parents on the very first run so we can restore later
+  if (!_photoParents) {
+    const els = [heroEl, jPhotos[2], jPhotos[0], liverpool, collage[0], guitar, moreBtn, jPhotos[1], collage[1]].filter(Boolean);
+    _photoParents = new Map(els.map(el => [el, { parent: el.parentElement, next: el.nextElementSibling }]));
+  }
+
+  // Pre-clear the transform on MORE so place() measures its natural height
+  if (moreBtn) moreBtn.style.transform = 'none';
 
   // RIGHT side — hero, Greece, Belgium, Liverpool (all via place() for accurate heights)
   // ~80px   — top of #hero section; sits beside the hero name/subtitle
-  place(document.getElementById('heroPhoto'),          80,    true);
+  place(heroEl,      80,    true);
   // ~870px  — mid #work section ("Some of the Work" cards); Greece workshop photo
-  place(jPhotos[2],                                    870,   true);
+  place(jPhotos[2],  870,   true);
   // ~1750px — top of #human section ("Outside the Office"); Belgium workshop photo
-  place(jPhotos[0],                                    1750,  true);
+  place(jPhotos[0],  1750,  true);
   // ~2650px — bottom of #human / top of #journey; Liverpool sticker as a fun accent
-  place(document.getElementById('liverpoolSticker'),   2650,  true);
-
-  // Pre-clear the transform on MORE so place() measures its natural height
-  const moreBtn = document.getElementById('moreLogoBig');
-  if (moreBtn) moreBtn.style.transform = 'none';
-
-  const guitar = document.getElementById('musicIconBtn');
+  place(liverpool,   2650,  true);
 
   // LEFT side — all items through place() so cursor stays accurate
   // ~440px  — bottom of #hero / top of #what section; "Off the clock" collage shot
@@ -868,6 +880,49 @@ function initPhotoLayout() {
 }
 
 window.addEventListener('load', initPhotoLayout);
+
+// Debounced resize: re-run layout only when viewport crosses the 900px mobile threshold.
+// Crossing desktop → mobile restores elements to their original HTML containers.
+// Crossing mobile → desktop re-runs initPhotoLayout() from scratch.
+(function () {
+  let prevIsMobile = window.innerWidth < 900;
+  let timer;
+
+  window.addEventListener('resize', () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      const isMobile = window.innerWidth < 900;
+      if (isMobile === prevIsMobile) return;
+      prevIsMobile = isMobile;
+
+      if (isMobile) {
+        // Desktop → mobile: put each element back into its original container
+        if (_photoParents) {
+          _photoParents.forEach(({ parent, next }, el) => {
+            if (!el || !parent) return;
+            el.style.position  = '';
+            el.style.display   = '';
+            el.style.margin    = '';
+            el.style.width     = '';
+            el.style.top       = '';
+            el.style.left      = '';
+            el.style.right     = '';
+            el.style.zIndex    = '';
+            el.style.transform = '';
+            if (next && next.parentElement === parent) parent.insertBefore(el, next);
+            else parent.appendChild(el);
+          });
+        }
+        // Re-show containers (were hidden by initPhotoLayout)
+        ['.hero-photo', '.human-collage', '.journey-photos']
+          .forEach(sel => { const c = document.querySelector(sel); if (c) c.style.display = ''; });
+      } else {
+        // Mobile → desktop: elements are back in their containers, re-run layout
+        initPhotoLayout();
+      }
+    }, 250);
+  });
+}());
 
 
 /* =========================================================
