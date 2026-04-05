@@ -113,4 +113,6 @@ Based on the important tasks - anything else you need to revisit?
 ##
 - [x] Hide some of the work - so it hidden somewhere to be expandend - remove the follow cursor animation on it — done: last 2 work cards (HYPEDROP + Replenishment) hidden behind a "there's more ↓" toggle; reveals with fade-in. Removed magnetic cursor-follow from all work cards.
 
-I dont like the animation on the icons in what gets me going - that does work - do someelse - make just something happens when you click the icons or in the area something happens with the icons - differrently in each of the 3 areas.
+- [x] I dont like the animation on the icons in what gets me going - that does work - do someelse - make just something happens when you click the icons or in the area something happens with the icons - differrently in each of the 3 areas. — done: removed hover animation on icons; each card now has a unique click interaction: Card 01 (Connecting the dots) animates an SVG dot-network with dashed amber lines; Card 02 (Getting things shipped) slams a "SHIPPED ✓" rubber-stamp effect; Card 03 (Killing Boring Work) pops up boring-task emojis (📋📊✉️📄) then eliminates them with a "🤖 Automated" badge.
+
+HIDE HIDKE some of the work dont show some of the 4 things - hide it more and put it somewhere else

@@ -642,9 +642,7 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
   margin-bottom: var(--space-sm);
   line-height: 1;
   display: inline-block;
-  transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
 }
-.do-card:hover .do-icon { transform: scale(1.25) rotate(-6deg); }
 
 .do-num {
   font-family: var(--font-display);

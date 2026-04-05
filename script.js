@@ -545,6 +545,168 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* -------------------------------------------------------
+     L2: "What gets me going" — unique click interactions per card
+     ------------------------------------------------------- */
+  const doCards = document.querySelectorAll('.do-card');
+
+  // Card 01 — "Connecting the dots": SVG dot network animates across the card
+  if (doCards[0]) {
+    doCards[0].addEventListener('click', function () {
+      if (this._dotAnimating) return;
+      this._dotAnimating = true;
+      const card = this;
+
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:10;overflow:hidden;border-radius:inherit;';
+
+      const w = card.offsetWidth, h = card.offsetHeight;
+      // 6 pseudo-random but visually spread points (% of card size)
+      const pts = [
+        [18, 22], [55, 14], [80, 38], [70, 68], [35, 80], [12, 58]
+      ].map(([px, py]) => [px / 100 * w, py / 100 * h]);
+
+      // Lines first (behind dots)
+      const lines = [];
+      for (let i = 0; i < pts.length - 1; i++) {
+        const ln = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        ln.setAttribute('x1', pts[i][0]); ln.setAttribute('y1', pts[i][1]);
+        ln.setAttribute('x2', pts[i+1][0]); ln.setAttribute('y2', pts[i+1][1]);
+        ln.setAttribute('stroke', '#f59e0b'); ln.setAttribute('stroke-width', '1.5');
+        ln.setAttribute('stroke-opacity', '0.55'); ln.setAttribute('stroke-dasharray', '3 3');
+        ln.style.cssText = 'opacity:0;transition:opacity 0.18s;';
+        svg.appendChild(ln); lines.push(ln);
+      }
+      // Also close the loop
+      const last = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      last.setAttribute('x1', pts[pts.length-1][0]); last.setAttribute('y1', pts[pts.length-1][1]);
+      last.setAttribute('x2', pts[0][0]); last.setAttribute('y2', pts[0][1]);
+      last.setAttribute('stroke', '#6366f1'); last.setAttribute('stroke-width', '1');
+      last.setAttribute('stroke-opacity', '0.4'); last.setAttribute('stroke-dasharray', '2 4');
+      last.style.cssText = 'opacity:0;transition:opacity 0.18s;';
+      svg.appendChild(last); lines.push(last);
+
+      // Dots (in front)
+      pts.forEach(([cx, cy], i) => {
+        const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('cx', cx); c.setAttribute('cy', cy);
+        c.setAttribute('r', i === 0 ? 5 : 3.5);
+        c.setAttribute('fill', i === 0 ? '#f59e0b' : '#ffffff');
+        c.setAttribute('fill-opacity', '0.85');
+        c.style.cssText = 'opacity:0;transition:opacity 0.15s;';
+        svg.appendChild(c);
+        setTimeout(() => (c.style.opacity = '1'), i * 110);
+      });
+
+      lines.forEach((ln, i) => setTimeout(() => (ln.style.opacity = '1'), 90 + i * 110));
+
+      card.appendChild(svg);
+
+      // Fade out and remove
+      setTimeout(() => {
+        svg.style.transition = 'opacity 0.5s';
+        svg.style.opacity = '0';
+        setTimeout(() => { svg.remove(); card._dotAnimating = false; }, 500);
+      }, 2000);
+    });
+  }
+
+  // Card 02 — "Getting things shipped": rubber-stamp "SHIPPED ✓" slams down
+  if (doCards[1]) {
+    doCards[1].addEventListener('click', function () {
+      if (this._stampAnimating) return;
+      this._stampAnimating = true;
+      const card = this;
+
+      const stamp = document.createElement('div');
+      stamp.textContent = 'SHIPPED ✓';
+      stamp.style.cssText = `
+        position:absolute;top:50%;left:50%;
+        transform:translate(-50%,-50%) scale(2.8) rotate(-14deg);
+        color:#f59e0b;font-family:var(--font-display);font-size:1.5rem;font-weight:800;
+        letter-spacing:0.1em;border:3px solid #f59e0b;padding:5px 16px;border-radius:3px;
+        pointer-events:none;z-index:10;opacity:0;white-space:nowrap;
+        transition:transform 0.22s cubic-bezier(.17,.67,.35,1.4),opacity 0.1s;
+      `;
+      card.appendChild(stamp);
+
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        stamp.style.transform = 'translate(-50%,-50%) scale(1) rotate(-14deg)';
+        stamp.style.opacity = '1';
+      }));
+
+      setTimeout(() => {
+        stamp.style.transition = 'opacity 0.4s';
+        stamp.style.opacity = '0';
+        setTimeout(() => { stamp.remove(); card._stampAnimating = false; }, 400);
+      }, 1500);
+    });
+  }
+
+  // Card 03 — "Killing Boring Work": boring task emojis pop up then get wiped by 🤖
+  if (doCards[2]) {
+    doCards[2].addEventListener('click', function () {
+      if (this._killAnimating) return;
+      this._killAnimating = true;
+      const card = this;
+
+      const tasks = [
+        { emoji: '📋', x: 12, y: 28 },
+        { emoji: '📊', x: 38, y: 18 },
+        { emoji: '✉️', x: 62, y: 32 },
+        { emoji: '📄', x: 82, y: 20 },
+      ];
+      const spawned = [];
+
+      tasks.forEach(({ emoji, x, y }, i) => {
+        const el = document.createElement('div');
+        el.textContent = emoji;
+        el.style.cssText = `
+          position:absolute;left:${x}%;top:${y}%;font-size:1.5rem;
+          pointer-events:none;z-index:10;opacity:0;
+          transform:scale(0) rotate(-15deg);
+          transition:transform 0.2s cubic-bezier(.34,1.56,.64,1),opacity 0.2s;
+        `;
+        card.appendChild(el);
+        spawned.push(el);
+        setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'scale(1) rotate(0deg)';
+        }, i * 140);
+      });
+
+      // Then eliminate each one
+      tasks.forEach((_, i) => {
+        setTimeout(() => {
+          const el = spawned[i];
+          el.style.transition = 'transform 0.25s ease-in,opacity 0.25s';
+          el.style.transform = 'scale(0) rotate(20deg)';
+          el.style.opacity = '0';
+        }, 900 + i * 120);
+      });
+
+      // "🤖 Automated" badge appears bottom-right
+      setTimeout(() => {
+        const badge = document.createElement('div');
+        badge.textContent = '🤖 Automated';
+        badge.style.cssText = `
+          position:absolute;bottom:14px;right:14px;color:#6366f1;font-size:0.8rem;
+          font-weight:700;pointer-events:none;z-index:10;opacity:0;
+          letter-spacing:0.05em;transition:opacity 0.3s;
+        `;
+        card.appendChild(badge);
+        requestAnimationFrame(() => requestAnimationFrame(() => (badge.style.opacity = '1')));
+        setTimeout(() => {
+          badge.style.opacity = '0';
+          setTimeout(() => badge.remove(), 300);
+        }, 900);
+        spawned.forEach(el => setTimeout(() => el.remove(), 250));
+        setTimeout(() => (card._killAnimating = false), 300);
+      }, 1700);
+    });
+  }
+
+
+  /* -------------------------------------------------------
      M-0: Work card flip — click to reveal behind-the-scenes story
      ------------------------------------------------------- */
   document.querySelectorAll('.work-card').forEach(card => {
