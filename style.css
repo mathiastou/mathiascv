@@ -930,90 +930,6 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
 .collage-item { width: 240px; }
 
 /* =============================================
-   JOURNEY (CV — bottom)
-   ============================================= */
-.timeline {
-  position: relative;
-  padding-left: var(--space-lg);
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 12px; bottom: 12px;
-  width: 1px;
-  background: linear-gradient(to bottom, var(--accent) 0%, rgba(245,158,11,0.2) 70%, transparent 100%);
-}
-
-.timeline-entry { position: relative; margin-bottom: var(--space-md); }
-
-.timeline-dot {
-  position: absolute;
-  left: calc(-1 * var(--space-lg) - 4px);
-  top: 22px;
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 3px rgba(245,158,11,0.2);
-  transition: box-shadow var(--trans-med);
-  z-index: 1;
-}
-
-.timeline-entry:hover .timeline-dot {
-  box-shadow: 0 0 0 6px rgba(245,158,11,0.15), 0 0 20px rgba(245,158,11,0.4);
-}
-
-.timeline-card { padding: var(--space-md); }
-
-.tl-header {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-sm);
-  flex-wrap: wrap;
-  margin-bottom: 6px;
-}
-
-.tl-company { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 700; }
-.tl-period { font-size: var(--text-xs); color: var(--text-muted); letter-spacing: 0.08em; margin-left: auto; }
-
-.tl-role-badge {
-  display: inline-block;
-  padding: 3px 10px;
-  background: var(--accent-dim);
-  border: 1px solid rgba(245,158,11,0.2);
-  border-radius: 100px;
-  font-size: var(--text-xs);
-  font-weight: 500;
-  color: var(--accent);
-  letter-spacing: 0.04em;
-  margin-bottom: var(--space-md);
-}
-
-.tl-highlights { display: flex; flex-direction: column; gap: var(--space-sm); margin-bottom: var(--space-md); }
-
-.tl-highlight { display: flex; gap: 14px; align-items: flex-start; }
-
-.tl-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; line-height: 1; }
-
-.tl-highlight div { font-size: var(--text-sm); color: var(--text-secondary); font-weight: 300; line-height: 1.6; }
-.tl-highlight strong { color: var(--text-primary); font-weight: 500; }
-
-.tl-grade { display: flex; align-items: baseline; gap: 8px; margin-top: var(--space-sm); }
-.grade-label { font-size: var(--text-xs); color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em; }
-.grade-value { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 800; color: var(--accent); line-height: 1; }
-.grade-note { font-size: var(--text-sm); color: var(--text-muted); }
-
-/* Journey photos — bigger */
-.journey-photos {
-  display: flex;
-  gap: var(--space-md);
-  flex-wrap: wrap;
-  margin-top: var(--space-md);
-}
-
-.journey-photos .polaroid { width: 230px; }
-
-/* =============================================
    CONTACT
    ============================================= */
 .contact-heading { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 800; line-height: 1.0; margin-bottom: var(--space-sm); }
@@ -1196,10 +1112,6 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
 
   .sticky-profile { top: 16px; right: 16px; width: 58px; height: 58px; }
 
-  .timeline { padding-left: var(--space-md); }
-  .timeline-dot { left: calc(-1 * var(--space-md) - 4px); }
-
-  .journey-photos .polaroid { width: 160px; }
   .collage-item { width: 160px; }
 
   .mini-player { bottom: 14px; right: 14px; }

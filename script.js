@@ -859,7 +859,7 @@ function initPhotoLayout() {
   place(jPhotos[2],  870,   true);
   // ~1750px — top of #human section ("Outside the Office"); Belgium workshop photo
   place(jPhotos[0],  1750,  true);
-  // ~2650px — bottom of #human / top of #journey; Liverpool sticker as a fun accent
+  // ~2650px — bottom of #human / top of #contact; Liverpool sticker as a fun accent
   place(liverpool,   2650,  true);
 
   // LEFT side — all items through place() so cursor stays accurate
@@ -869,9 +869,9 @@ function initPhotoLayout() {
   place(guitar,      1200,  false);
   // ~1900px — mid #human section; MORE logo button (click to open Flappy Bird)
   place(moreBtn,     1900,  false);
-  // ~2700px — top of #journey section ("The Story So Far"); France photo
+  // ~2700px — bottom of #human section; France photo
   place(jPhotos[1],  2700,  false);
-  // ~3500px — mid #journey / top of #contact; Jyllandsringen driving photo
+  // ~3500px — above #contact; Jyllandsringen driving photo
   place(collage[1],  3500,  false);
 
   // Hide now-empty containers

@@ -55,8 +55,8 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 
 - [x] **Remove unused CSS** — `style.css` is 34KB. Audit for rules that no longer match any HTML (e.g. old `.now-playing`, `.yt-*` YouTube remnants if any remain). Remove them.
 - [x] **Consolidate duplicate transitions** — several elements define `transition: transform 0.3s, opacity 0.3s` inline. Move to CSS classes.
-- [ ] **`initPhotoLayout` wantedTop values** — the hardcoded pixel offsets (80, 870, 1750, etc.) are tied to the current content height. Add a comment block above each group explaining what section they roughly align with, so future edits are easier.
-- [ ] **`_photoZ` counter** — currently a global. Scope it inside `makeDraggable` closure or a module pattern to avoid accidental overwrite.
+- [x] **`initPhotoLayout` wantedTop values** — the hardcoded pixel offsets (80, 870, 1750, etc.) are tied to the current content height. Add a comment block above each group explaining what section they roughly align with, so future edits are easier.
+- [x] **`_photoZ` counter** — currently a global. Scope it inside `makeDraggable` closure or a module pattern to avoid accidental overwrite.
 
 ---
 
@@ -66,10 +66,10 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
   - Main contact form (`#contactForm`)
   - Padel challenge form (`#padelForm`)
   - Create a free account at formspree.io and use the generated form endpoint.
-- [ ] **Beer card click** — `#beerCard` has no click interaction. Consider: click opens a short fun fact or a toast notification ("It was a pale ale. 7.2%. Would recommend.").
-- [ ] **Drums card click** — `#drumsCard` similarly has no interaction. Could trigger a short drum-roll sound or a tooltip.
-- [ ] **OG / social meta tags** — add `<meta property="og:title">`, `og:description`, `og:image` (use `profileimage2022.jpg`) in `<head>` for better link previews when shared.
-- [ ] **Favicon** — no favicon is set. Add a simple one (could be the ☕ emoji rendered as SVG) via `<link rel="icon">` in `<head>`.
+- [x] **Beer card click** — `#beerCard` has no click interaction. Consider: click opens a short fun fact or a toast notification ("It was a pale ale. 7.2%. Would recommend.").
+- [x] **Drums card click** — `#drumsCard` similarly has no interaction. Could trigger a short drum-roll sound or a tooltip.
+- [x] **OG / social meta tags** — add `<meta property="og:title">`, `og:description`, `og:image` (use `profileimage2022.jpg`) in `<head>` for better link previews when shared.
+- [x] **Favicon** — no favicon is set. Add a simple one (could be the ☕ emoji rendered as SVG) via `<link rel="icon">` in `<head>`.
 
 ---
 
@@ -82,7 +82,7 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 
 
 ## IMPORTANT other tasks: 
-reomve the story so far prat- to CV like- they can look that shit up in linkedin. 
+- [x] reomve the story so far prat- to CV like- they can look that shit up in linkedin. 
 
 make the some of the work part into things on the page - that are interactive and like easter egg hidden- so when clicked story is told or something - based on interactions of game or whatever you think makes sense. 
 

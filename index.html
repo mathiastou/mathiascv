@@ -301,108 +301,27 @@
       </div>
     </section>
 
-    <!-- ===================== JOURNEY (CV) — BOTTOM ===================== -->
-    <section id="journey" class="section" data-section-color="#f59e0b">
-      <div class="container">
-        <div class="section-label reveal-up">The Story So Far</div>
-
-        <div class="timeline">
-
-          <!-- BESTSELLER -->
-          <div class="timeline-entry reveal-left" data-delay="0.0">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card glass-card">
-              <div class="tl-header">
-                <div class="tl-company">BESTSELLER</div>
-                <div class="tl-period">Nov 2021 — Present</div>
-              </div>
-              <div class="tl-role-badge">Business Developer / Innovation Lead</div>
-
-              <div class="tl-highlights">
-                <div class="tl-highlight">
-                  <span class="tl-icon">🏗️</span>
-                  <div><strong>MORE</strong> — BESTSELLER's new B2B sales platform. Rolled out across Norway, Sweden, Belgium, Greece, Turkey, Dubai, France, Finland and more.</div>
-                </div>
-                <div class="tl-highlight">
-                  <span class="tl-icon">🚀</span>
-                  <div><strong>HYPEDROP</strong> — Digital-first drop brand. Weekly collections, 72-hour order windows, zero overproduction. From zero to live.</div>
-                </div>
-                <div class="tl-highlight">
-                  <span class="tl-icon">🤖</span>
-                  <div><strong>Media Bank · AI</strong> — Built an AI-powered digital asset tool for SELECTED. Shipped early 2025, live in production.</div>
-                </div>
-                <div class="tl-highlight">
-                  <span class="tl-icon">📦</span>
-                  <div><strong>Replenishment</strong> — Automated B2B ordering flows so wholesale partners stop doing things manually that machines should handle.</div>
-                </div>
-                <div class="tl-highlight">
-                  <span class="tl-icon">🔄</span>
-                  <div><strong>EXTRANET → DIRECT</strong> — Helped close two legacy wholesale platforms. Migrations, stakeholders, the whole thing.</div>
-                </div>
-              </div>
-
-              <!-- Journey photos — bigger, draggable -->
-              <div class="journey-photos">
-                <div class="polaroid draggable" style="--rot: -4deg;">
-                  <img src="imageofworkshopinbelgiumformore.png" alt="MORE workshop Belgium" loading="lazy" />
-                  <span class="polaroid-caption">Belgium 🇧🇪</span>
-                </div>
-                <div class="polaroid draggable" style="--rot: 3deg;">
-                  <img src="moreworkshopingreece.png" alt="MORE workshop Greece" loading="lazy" />
-                  <span class="polaroid-caption">Greece 🇬🇷</span>
-                </div>
-                <div class="polaroid draggable" style="--rot: -2deg;">
-                  <img src="photoofmathiasinmoret-shirtinfrance.png" alt="Mathias in a MORE t-shirt in France" loading="lazy" />
-                  <span class="polaroid-caption">France 🇫🇷</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Lasertryk -->
-          <div class="timeline-entry reveal-left" data-delay="0.1">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card glass-card">
-              <div class="tl-header">
-                <div class="tl-company">Lasertryk.dk</div>
-                <div class="tl-period">Aug 2018 — Nov 2021</div>
-              </div>
-              <div class="tl-role-badge">Shipping Specialist → Student Worker</div>
-              <div class="tl-highlights">
-                <div class="tl-highlight">
-                  <span class="tl-icon">📬</span>
-                  <div>Started in print-on-demand and special packaging. Learnt how real operations work when volume scales fast and margin is thin.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Education -->
-          <div class="timeline-entry reveal-left" data-delay="0.2">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card glass-card">
-              <div class="tl-header">
-                <div class="tl-company">Business Academy Aarhus</div>
-                <div class="tl-period">Aug 2020 — Dec 2023</div>
-              </div>
-              <div class="tl-role-badge">Bachelor — Economics &amp; IT</div>
-              <div class="tl-highlights">
-                <div class="tl-highlight">
-                  <span class="tl-icon">🎓</span>
-                  <div>Combined business and tech — because doing one without the other never made sense to me. Did my internship at BESTSELLER while studying.</div>
-                </div>
-              </div>
-              <div class="tl-grade">
-                <span class="grade-label">Final grade</span>
-                <span class="grade-value">12</span>
-                <span class="grade-note">— top of scale</span>
-              </div>
-            </div>
-          </div>
-
+    <!-- Journey photos stash — moved to body by initPhotoLayout() on desktop.
+         Kept outside any visible section so removing the CV timeline doesn't
+         break the floating polaroid feature. The outer wrapper is always
+         hidden; on mobile resize the inner .journey-photos inline style is
+         cleared by the resize handler but the outer wrapper keeps it hidden. -->
+    <div style="display:none" aria-hidden="true">
+      <div class="journey-photos">
+        <div class="polaroid draggable" style="--rot: -4deg;">
+          <img src="imageofworkshopinbelgiumformore.png" alt="MORE workshop Belgium" loading="lazy" />
+          <span class="polaroid-caption">Belgium 🇧🇪</span>
+        </div>
+        <div class="polaroid draggable" style="--rot: 3deg;">
+          <img src="moreworkshopingreece.png" alt="MORE workshop Greece" loading="lazy" />
+          <span class="polaroid-caption">Greece 🇬🇷</span>
+        </div>
+        <div class="polaroid draggable" style="--rot: -2deg;">
+          <img src="photoofmathiasinmoret-shirtinfrance.png" alt="Mathias in a MORE t-shirt in France" loading="lazy" />
+          <span class="polaroid-caption">France 🇫🇷</span>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- ===================== CONTACT ===================== -->
     <section id="contact" class="section" data-section-color="#f59e0b">
