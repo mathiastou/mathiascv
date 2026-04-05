@@ -1004,46 +1004,90 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
 }
 .work-card-back-close:hover { opacity: 1; }
 
-/* Work extra cards — hidden until expanded */
-.work-card--extra {
-  display: none;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-.work-card--extra.is-revealed {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
+/* =============================================
+   SECRET ARCHIVE PANEL — triggered from footer ···
+   ============================================= */
 
-/* "there's more" toggle button */
-.work-more-wrap {
-  display: flex;
-  justify-content: center;
-  margin-top: var(--space-lg);
-}
-.work-more-btn {
+/* Footer trigger button */
+.archive-trigger {
   background: none;
-  border: 1px solid rgba(245,158,11,0.25);
-  border-radius: 2rem;
-  color: rgba(245,158,11,0.7);
+  border: none;
+  color: rgba(255,255,255,0.12);
   cursor: pointer;
   font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  padding: 0.45rem 1.2rem;
-  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  padding: 0 0.5rem;
+  transition: color 0.3s;
 }
-.work-more-btn:hover {
-  border-color: rgba(245,158,11,0.6);
-  color: var(--accent);
-  background: rgba(245,158,11,0.05);
+.archive-trigger:hover { color: rgba(245,158,11,0.6); }
+
+/* Backdrop */
+.archive-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
-.work-more-btn .work-more-label-open { display: none; }
-.work-more-btn[aria-expanded="true"] .work-more-label { display: none; }
-.work-more-btn[aria-expanded="true"] .work-more-label-open { display: inline; }
+.archive-panel[hidden] { display: none; }
+
+.archive-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+}
+
+/* Slide-up drawer */
+.archive-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 860px;
+  background: #0f0f0f;
+  border-top: 1px solid rgba(245,158,11,0.18);
+  border-radius: 1.2rem 1.2rem 0 0;
+  padding: var(--space-lg) var(--space-lg) var(--space-xl);
+  transform: translateY(100%);
+  animation: archiveSlideUp 0.35s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+@keyframes archiveSlideUp {
+  to { transform: translateY(0); }
+}
+
+.archive-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  font-size: 1.6rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.archive-close:hover { color: #fff; }
+
+.archive-label {
+  color: rgba(255,255,255,0.25);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+@media (max-width: 600px) {
+  .archive-grid { grid-template-columns: 1fr; }
+}
 
 /* =============================================
    HUMAN

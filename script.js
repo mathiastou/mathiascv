@@ -727,39 +727,39 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* -------------------------------------------------------
-     M-1: Work "show more" toggle — reveals extra hidden cards
+     M-1: Secret archive panel — opened via footer ··· button
      ------------------------------------------------------- */
-  const workMoreBtn   = document.getElementById('workMoreBtn');
-  const extraCards    = document.querySelectorAll('.work-card--extra');
+  const archiveTrigger  = document.getElementById('archiveTrigger');
+  const archivePanel    = document.getElementById('archivePanel');
+  const archiveClose    = document.getElementById('archiveClose');
+  const archiveBackdrop = document.getElementById('archiveBackdrop');
+  let archivePrevFocus  = null;
 
-  if (workMoreBtn && extraCards.length) {
-    workMoreBtn.addEventListener('click', () => {
-      const isOpen = workMoreBtn.getAttribute('aria-expanded') === 'true';
+  function openArchive() {
+    archivePrevFocus = document.activeElement;
+    archivePanel.hidden = false;
+    document.body.style.overflow = 'hidden';
+    archiveClose.focus();
+  }
 
-      if (!isOpen) {
-        // Reveal: set display:block first, then trigger animation next frame
-        extraCards.forEach((card, i) => {
-          card.style.display = 'block';
-          // stagger reveal with a small delay per card
-          setTimeout(() => card.classList.add('is-revealed'), 30 + i * 60);
-        });
-        workMoreBtn.setAttribute('aria-expanded', 'true');
-      } else {
-        // Hide
-        extraCards.forEach(card => {
-          card.classList.remove('is-revealed', 'is-flipped');
-          const back = card.querySelector('.work-card-back');
-          if (back) back.setAttribute('aria-hidden', 'true');
-          // wait for CSS transition, then actually hide
-          card.addEventListener('transitionend', function handler() {
-            card.style.display = 'none';
-            card.removeEventListener('transitionend', handler);
-          });
-        });
-        workMoreBtn.setAttribute('aria-expanded', 'false');
-      }
+  function closeArchive() {
+    archivePanel.hidden = true;
+    document.body.style.overflow = '';
+    if (archivePrevFocus) archivePrevFocus.focus();
+    // reset any flipped cards inside archive
+    archivePanel.querySelectorAll('.work-card.is-flipped').forEach(card => {
+      card.classList.remove('is-flipped');
+      const back = card.querySelector('.work-card-back');
+      if (back) back.setAttribute('aria-hidden', 'true');
     });
   }
+
+  if (archiveTrigger) archiveTrigger.addEventListener('click', openArchive);
+  if (archiveClose)   archiveClose.addEventListener('click', closeArchive);
+  if (archiveBackdrop) archiveBackdrop.addEventListener('click', closeArchive);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && archivePanel && !archivePanel.hidden) closeArchive();
+  });
 
 
   /* -------------------------------------------------------
