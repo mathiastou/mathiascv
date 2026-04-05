@@ -48,8 +48,8 @@ mathiascv/
 |----|-------|-------|
 | `#hero` | — | Name, subtitle, scroll cue, profile polaroid |
 | `#journey` | The Story So Far | Timeline of experience + journey photos |
-| `#work` | Some of the Work | Work cards for BESTSELLER, MORE, BALMOHK |
 | `#human` | The Human Part | Cards: running, padel, beer, drums + collage photos |
+| `#work` | Some of the Work | **Collapsed by default.** Moved to bottom of page. Toggle button shows/hides the two work cards. Secret archive panel accessible via `···` in footer. |
 | `#contact` | Get in Touch | Email form + contact links + coffee CTA |
 
 ---

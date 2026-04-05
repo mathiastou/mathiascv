@@ -153,64 +153,6 @@
       </div>
     </section>
 
-    <!-- ===================== SELECTED WORK ===================== -->
-    <section id="work" class="section" data-section-color="#a3e635" style="position:relative;">
-      <!-- Big MORE logo — click for Flappy Bird -->
-      <button class="more-logo-decor" id="moreLogoBig" aria-label="Play Flappy MORE" title="Play Flappy MORE 🐦">
-        <img src="more..png" alt="" loading="lazy" />
-        <span class="more-logo-label">▶ Play</span>
-      </button>
-      <div class="container">
-        <div class="section-label reveal-up">Some of the Work</div>
-
-        <div class="work-grid">
-
-          <div class="work-card glass-card reveal-up" data-delay="0.0">
-            <div class="work-card-inner">
-              <div class="work-icon">🤖</div>
-              <h3 class="work-title">Media Bank · AI</h3>
-              <div class="work-tags">
-                <span class="wtag">AI tools</span>
-                <span class="wtag">SELECTED brand</span>
-                <span class="wtag">Live 2025</span>
-              </div>
-              <p class="work-desc">Digital asset management for SELECTED. Built using AI tools to get it done fast. Replaced manual, slow workflows with something that actually works. Live in production.</p>
-            </div>
-            <div class="work-hover-overlay"><span>Early 2025 · BESTSELLER · Still running 🟢</span></div>
-            <div class="work-card-back" aria-hidden="true">
-              <span class="work-card-back-label">behind the scenes</span>
-              <p class="work-card-back-story">Specs that would've taken weeks to write, done in days with AI tooling. The brief kept changing but the deadline didn't. Shipped in under three months. The original plan said six. Still running.</p>
-              <span class="work-card-back-close">tap to flip back</span>
-            </div>
-          </div>
-
-          <div class="work-card glass-card reveal-up" data-delay="0.1">
-            <div class="work-card-inner">
-              <div class="work-icon">🌍</div>
-              <h3 class="work-title">MORE B2B Platform</h3>
-              <div class="work-tags">
-                <span class="wtag">Wholesale</span>
-                <span class="wtag">12+ markets</span>
-                <span class="wtag">BESTSELLER</span>
-              </div>
-              <p class="work-desc">Next-gen B2B ordering platform. Norway to Dubai — rolling out markets, fixing friction, building the thing wholesale should actually feel like.</p>
-              <div class="work-logos">
-                <img src="more..png" alt="MORE" class="work-logo" loading="lazy" />
-              </div>
-            </div>
-            <div class="work-hover-overlay"><span>2022 — ongoing · ~8 teams · Still going 🟢</span></div>
-            <div class="work-card-back" aria-hidden="true">
-              <span class="work-card-back-label">behind the scenes</span>
-              <p class="work-card-back-story">Market one was Norway. Then Spain, Dubai, the UK. Every rollout taught us something the previous market didn't. Eight teams at peak. The trick was figuring out which problems were actually the same problem wearing a different hat.</p>
-              <span class="work-card-back-close">tap to flip back</span>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
     <!-- ===================== HUMAN ===================== -->
     <section id="human" class="section human-section" data-section-color="#f472b6">
       <div class="container">
@@ -385,6 +327,66 @@
         <button class="archive-trigger" id="archiveTrigger" aria-label="See more projects" title="there's more if you want it">···</button>
         <span>Aarhus, Denmark</span>
       </footer>
+    </section>
+
+    <!-- ===================== WORK (bottom, collapsed) ===================== -->
+    <section id="work" class="section work-bottom" data-section-color="#a3e635" style="position:relative;">
+      <!-- Big MORE logo — click for Flappy Bird -->
+      <button class="more-logo-decor" id="moreLogoBig" aria-label="Play Flappy MORE" title="Play Flappy MORE 🐦">
+        <img src="more..png" alt="" loading="lazy" />
+        <span class="more-logo-label">▶ Play</span>
+      </button>
+      <div class="container">
+        <div class="work-toggle-row">
+          <div class="section-label">Some of the Work</div>
+          <button class="work-toggle-btn" id="workToggleBtn" aria-expanded="false">show ↓</button>
+        </div>
+
+        <div class="work-grid work-grid--collapsed" id="workGrid">
+
+          <div class="work-card glass-card" data-delay="0.0">
+            <div class="work-card-inner">
+              <div class="work-icon">🤖</div>
+              <h3 class="work-title">Media Bank · AI</h3>
+              <div class="work-tags">
+                <span class="wtag">AI tools</span>
+                <span class="wtag">SELECTED brand</span>
+                <span class="wtag">Live 2025</span>
+              </div>
+              <p class="work-desc">Digital asset management for SELECTED. Built using AI tools to get it done fast. Replaced manual, slow workflows with something that actually works. Live in production.</p>
+            </div>
+            <div class="work-hover-overlay"><span>Early 2025 · BESTSELLER · Still running 🟢</span></div>
+            <div class="work-card-back" aria-hidden="true">
+              <span class="work-card-back-label">behind the scenes</span>
+              <p class="work-card-back-story">Specs that would've taken weeks to write, done in days with AI tooling. The brief kept changing but the deadline didn't. Shipped in under three months. The original plan said six. Still running.</p>
+              <span class="work-card-back-close">tap to flip back</span>
+            </div>
+          </div>
+
+          <div class="work-card glass-card" data-delay="0.1">
+            <div class="work-card-inner">
+              <div class="work-icon">🌍</div>
+              <h3 class="work-title">MORE B2B Platform</h3>
+              <div class="work-tags">
+                <span class="wtag">Wholesale</span>
+                <span class="wtag">12+ markets</span>
+                <span class="wtag">BESTSELLER</span>
+              </div>
+              <p class="work-desc">Next-gen B2B ordering platform. Norway to Dubai — rolling out markets, fixing friction, building the thing wholesale should actually feel like.</p>
+              <div class="work-logos">
+                <img src="more..png" alt="MORE" class="work-logo" loading="lazy" />
+              </div>
+            </div>
+            <div class="work-hover-overlay"><span>2022 — ongoing · ~8 teams · Still going 🟢</span></div>
+            <div class="work-card-back" aria-hidden="true">
+              <span class="work-card-back-label">behind the scenes</span>
+              <p class="work-card-back-story">Market one was Norway. Then Spain, Dubai, the UK. Every rollout taught us something the previous market didn't. Eight teams at peak. The trick was figuring out which problems were actually the same problem wearing a different hat.</p>
+              <span class="work-card-back-close">tap to flip back</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </section>
 
     <!-- Secret project archive — accessible from footer ··· -->

@@ -864,6 +864,30 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
 /* =============================================
    SELECTED WORK
    ============================================= */
+.work-bottom { padding-top: var(--space-lg); }
+
+.work-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 0;
+}
+.work-toggle-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  padding: 4px 14px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.work-toggle-btn:hover { color: var(--text-primary); border-color: var(--text-muted); }
+.work-grid--collapsed { display: none; }
+.work-grid--open { display: grid; margin-top: var(--space-md); }
+
 .work-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

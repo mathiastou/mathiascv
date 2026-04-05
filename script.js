@@ -727,6 +727,28 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* -------------------------------------------------------
+     M-0: Work section toggle
+     ------------------------------------------------------- */
+  const workToggleBtn = document.getElementById('workToggleBtn');
+  const workGrid      = document.getElementById('workGrid');
+  if (workToggleBtn && workGrid) {
+    workToggleBtn.addEventListener('click', () => {
+      const isOpen = workGrid.classList.contains('work-grid--open');
+      if (isOpen) {
+        workGrid.classList.remove('work-grid--open');
+        workGrid.classList.add('work-grid--collapsed');
+        workToggleBtn.textContent = 'show ↓';
+        workToggleBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        workGrid.classList.remove('work-grid--collapsed');
+        workGrid.classList.add('work-grid--open');
+        workToggleBtn.textContent = 'hide ↑';
+        workToggleBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  }
+
+  /* -------------------------------------------------------
      M-1: Secret archive panel — opened via footer ··· button
      ------------------------------------------------------- */
   const archiveTrigger  = document.getElementById('archiveTrigger');
