@@ -47,7 +47,7 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 - [x] **Focus styles** — most interactive elements have no visible focus ring (removed by CSS reset). Add `:focus-visible` outlines to `.contact-link`, `.human-card--clickable`, `#moreLogoBig`, `#musicIconBtn`.
 - [x] **Alt text audit** — check every `<img>` has a meaningful `alt`. Decorative images (grain, orbs) should have `alt=""`.
 - [x] **Modal focus trap** — when the Flappy Bird modal or padel modal opens, focus should be trapped inside and restored on close. Currently focus is not managed.
-- [ ] **Reduced motion** — wrap the `runner-cross` animation, smoke canvas, and orb animations in `@media (prefers-reduced-motion: reduce)` and disable/simplify them.
+- [x] **Reduced motion** — wrap the `runner-cross` animation, smoke canvas, and orb animations in `@media (prefers-reduced-motion: reduce)` and disable/simplify them.
 
 ---
 

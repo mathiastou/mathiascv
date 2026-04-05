@@ -64,7 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
      ------------------------------------------------------- */
   const dot    = document.querySelector('.cursor-dot');
   const isTouchDevice = 'ontouchstart' in window;
-  const canvas = isTouchDevice ? null : document.getElementById('smokeCanvas');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canvas = (isTouchDevice || prefersReducedMotion) ? null : document.getElementById('smokeCanvas');
   const ctx    = canvas ? canvas.getContext('2d') : null;
   let mouseX   = window.innerWidth  / 2;
   let mouseY   = window.innerHeight / 2;
@@ -183,26 +184,28 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
   let nx = 0, ny = 0, sy = 0, orbFrame = false;
 
-  document.addEventListener('mousemove', (e) => {
-    nx = (e.clientX - window.innerWidth  / 2) / (window.innerWidth  / 2);
-    ny = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
-    orbs.forEach(o => {
-      if (o.el) o.el.style.transform = `translate(${nx * o.d}px,${ny * o.d + sy * 0.06}px)`;
-    });
-  });
-
-  window.addEventListener('scroll', () => {
-    sy = window.scrollY;
-    if (!orbFrame) {
-      requestAnimationFrame(() => {
-        orbs.forEach(o => {
-          if (o.el) o.el.style.transform = `translate(${nx * o.d}px,${ny * o.d + sy * 0.06}px)`;
-        });
-        orbFrame = false;
+  if (!prefersReducedMotion) {
+    document.addEventListener('mousemove', (e) => {
+      nx = (e.clientX - window.innerWidth  / 2) / (window.innerWidth  / 2);
+      ny = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+      orbs.forEach(o => {
+        if (o.el) o.el.style.transform = `translate(${nx * o.d}px,${ny * o.d + sy * 0.06}px)`;
       });
-      orbFrame = true;
-    }
-  });
+    });
+
+    window.addEventListener('scroll', () => {
+      sy = window.scrollY;
+      if (!orbFrame) {
+        requestAnimationFrame(() => {
+          orbs.forEach(o => {
+            if (o.el) o.el.style.transform = `translate(${nx * o.d}px,${ny * o.d + sy * 0.06}px)`;
+          });
+          orbFrame = false;
+        });
+        orbFrame = true;
+      }
+    });
+  }
 
 
   /* -------------------------------------------------------
