@@ -105,7 +105,7 @@ I like linkedin park - maybe implement that joke somehow when linkin park song i
 - [x] a lot of the time the same animation vibe is used for clicking something - like it explodes out it with tthe same image or some icon - maybe adjust try out different cool animations for show off. (use only a little time on this) — done: beer card now uses rising bubbles (slow float up with gentle sway); padel card shows a 🎾 arc before opening modal; sticky profile click now orbits emojis in a spiral ring instead of a burst.
 
 ##
-do mobile check again - like does it work on other screen sizes (quick check)
+- [x] do mobile check again - like does it work on other screen sizes (quick check) — done: fixed game/padel close button unreachable on <480px screens (repositioned inside modal), canvas now uses aspect-ratio for proper scaling, coffee link margin fixed on mobile, archive drawer padding tightened, padel modal padding reduced on small screens, sticky profile shrinks further at 480px.
 
 ## 
 Based on the important tasks - anything else you need to revisit?

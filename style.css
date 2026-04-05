@@ -759,6 +759,12 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
 
 .game-close:hover { background: rgba(255,255,255,0.15); transform: rotate(90deg); }
 
+@media (max-width: 480px) {
+  /* Move close button inside modal on small screens so it's reachable */
+  .game-content { position: relative; padding-top: 44px; }
+  .game-close { top: 4px; right: 4px; }
+}
+
 /* ---- Padel modal ---- */
 .padel-modal {
   position: fixed;
@@ -851,8 +857,8 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.1);
   box-shadow: 0 40px 100px rgba(0,0,0,0.8);
-  max-width: min(420px, 90vw);
-  height: auto;
+  width: min(420px, 88vw);
+  aspect-ratio: 3 / 4;
 }
 
 /* =============================================
@@ -1339,11 +1345,18 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
 
   .mini-player { bottom: 14px; right: 14px; }
   .site-footer { flex-direction: column; gap: var(--space-xs); text-align: center; }
+
+  .coffee-link { margin-right: auto; }
+
+  /* Archive drawer: tighter padding on mobile */
+  .archive-content { padding: var(--space-md) var(--space-md) var(--space-lg); }
 }
 
 @media (max-width: 480px) {
   .human-grid { grid-template-columns: 1fr; }
   .mini-player { bottom: 12px; right: 12px; padding: 10px 14px; min-width: 160px; }
+  .padel-content { padding: 40px 20px 24px; }
+  .sticky-profile { width: 48px; height: 48px; }
 }
 
 /* ---- Touch devices ---- */
