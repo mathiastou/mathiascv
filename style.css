@@ -885,8 +885,6 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
   transition: color 0.2s, border-color 0.2s;
 }
 .work-toggle-btn:hover { color: var(--text-primary); border-color: var(--text-muted); }
-.work-grid--collapsed { display: none; }
-.work-grid--open { display: grid; margin-top: var(--space-md); }
 
 .work-grid {
   display: grid;
@@ -897,6 +895,9 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
   border-radius: var(--radius-card);
   overflow: hidden;
 }
+/* State classes must come after .work-grid to properly override display */
+.work-grid--collapsed { display: none; }
+.work-grid--open { display: grid; margin-top: var(--space-md); }
 
 .work-card {
   background: var(--surface);

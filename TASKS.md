@@ -121,7 +121,7 @@ Based on the important tasks - anything else you need to revisit?
 
 - [x] on mobile view have the guitar placed to the right top side
 
-some of thw work toggle does not work fix it - allign it so it looks properly. Content below the 2 topics should be undisplayed pr default 
+- [x] some of thw work toggle does not work fix it - allign it so it looks properly. Content below the 2 topics should be undisplayed pr default — fixed: `.work-grid--collapsed { display: none; }` was being overridden by the later `.work-grid { display: grid; }` rule (equal specificity, later wins). Moved state classes after the base rule so collapse/expand now works correctly.
 
 have a look at spacing betwwen main non moveable content? is it ok? idk?
 
