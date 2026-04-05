@@ -260,6 +260,23 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
 .mp-info { margin-bottom: 10px; padding-right: 16px; }
 .mp-song { display: block; font-size: 0.82rem; font-weight: 500; color: var(--text-primary); }
 .mp-artist { display: block; font-size: 0.65rem; color: var(--text-secondary); margin-top: 3px; letter-spacing: 0.05em; }
+.mp-linkedin-joke {
+  display: block;
+  font-size: 0.6rem;
+  color: #6366f1;
+  margin-top: 4px;
+  letter-spacing: 0.03em;
+  font-style: italic;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+  pointer-events: none;
+}
+.mp-linkedin-joke.visible {
+  opacity: 1;
+  max-height: 1.5em;
+}
 .mp-progress-wrap {
   height: 3px;
   background: rgba(255,255,255,0.1);

@@ -62,7 +62,7 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 
 ## Features / Content
 
-- [ ] **Formspree IDs** — replace both `REPLACE_WITH_FORMSPREE_ID` placeholders in `index.html`:
+- [x] **Formspree IDs** — replace both `REPLACE_WITH_FORMSPREE_ID` placeholders in `index.html`:
   - Main contact form (`#contactForm`)
   - Padel challenge form (`#padelForm`)
   - Create a free account at formspree.io and use the generated form endpoint.
@@ -96,7 +96,7 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 ## other imporant other tasks:
 - [x] the linkedin id should not be displayed on the page - just linking to linkedin. 
 
-I like linkedin park - maybe implement that joke somehow when linkin park song is playing
+- [x] I like linkedin park - maybe implement that joke somehow when linkin park song is playing — implemented: mini player shows "…you mean LinkedIn Park? 🤝" in indigo italic for 4s whenever music starts playing
 
 the image resizing is not really clear unless you know it is opssible - maybe change the color of the resize button or make it clearer in some other way. 
 

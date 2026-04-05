@@ -360,9 +360,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const bar = document.getElementById('mpBar');
     if (bar) bar.style.width = (audioEl.currentTime / audioEl.duration * 100) + '%';
   });
-  audioEl?.addEventListener('play',  () => setMusicState(true));
+  // LinkedIn Park joke — show on play, hide after 4s
+  let linkedinJokeTimer = null;
+  const linkedinJoke = document.getElementById('mpLinkedinJoke');
+  audioEl?.addEventListener('play', () => {
+    setMusicState(true);
+    if (linkedinJoke) {
+      clearTimeout(linkedinJokeTimer);
+      linkedinJoke.classList.add('visible');
+      linkedinJokeTimer = setTimeout(() => linkedinJoke.classList.remove('visible'), 4000);
+    }
+  });
   audioEl?.addEventListener('pause', () => setMusicState(false));
-  audioEl?.addEventListener('ended', () => setMusicState(false));
+  audioEl?.addEventListener('ended', () => {
+    setMusicState(false);
+    if (linkedinJoke) linkedinJoke.classList.remove('visible');
+  });
 
 
   /* -------------------------------------------------------
