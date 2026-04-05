@@ -116,3 +116,15 @@ Based on the important tasks - anything else you need to revisit?
 - [x] I dont like the animation on the icons in what gets me going - that does work - do someelse - make just something happens when you click the icons or in the area something happens with the icons - differrently in each of the 3 areas. — done: removed hover animation on icons; each card now has a unique click interaction: Card 01 (Connecting the dots) animates an SVG dot-network with dashed amber lines; Card 02 (Getting things shipped) slams a "SHIPPED ✓" rubber-stamp effect; Card 03 (Killing Boring Work) pops up boring-task emojis (📋📊✉️📄) then eliminates them with a "🤖 Automated" badge.
 
 - [x] HIDE HIDKE some of the work dont show some of the 4 things - hide it more and put it somewhere else — done: HYPEDROP and Replenishment removed from the work section entirely (toggle gone too). They now live in a secret slide-up drawer triggered by an almost-invisible `···` button in the footer between the name and location. Cards still flip to reveal behind-the-scenes stories. Drawer closes on backdrop click, × button, or Escape.
+
+- [x] add sounds to more flappy bird game — done: Web Audio API generates flap (descending sine), score (two-tone chime), and die (sawtooth drop) sounds; no external audio files needed.
+
+on mobile view have the guitar placed to the right top side
+
+some of thw work toggle does not work fix it - allign it so it looks properly. Content below the 2 topics should be undisplayed pr default 
+
+have a look at spacing betwwen main non moveable content? is it ok? idk?
+
+on mobile more flappy bird is just placed randomly at the bottom - change it so it centered like content of its own or something- just needs to be a bit clean. 
+
+the logo in the start saying better faster stronger more in black is reaally hard to see. adapt in a way so its not dimmed an visible.

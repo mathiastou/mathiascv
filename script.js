@@ -1312,11 +1312,47 @@ function initFlappyMore() {
     if ((e.key === ' ' || e.key === 'ArrowUp') && !modal.hidden) {
       e.preventDefault();
       if (game) {
-        if (game.state === 'idle')    { game.state = 'playing'; game.bird.vy = game.flap; }
-        else if (game.state === 'playing') { game.bird.vy = game.flap; }
+        if (game.state === 'idle')    { game.state = 'playing'; game.bird.vy = game.flap; playGameSound('flap'); }
+        else if (game.state === 'playing') { game.bird.vy = game.flap; playGameSound('flap'); }
       }
     }
   });
+
+  // Web Audio sound engine for the game
+  let _gameAudioCtx = null;
+  function playGameSound(type) {
+    try {
+      if (!_gameAudioCtx) _gameAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const ac   = _gameAudioCtx;
+      const osc  = ac.createOscillator();
+      const gain = ac.createGain();
+      osc.connect(gain);
+      gain.connect(ac.destination);
+      const t = ac.currentTime;
+      if (type === 'flap') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(480, t);
+        osc.frequency.exponentialRampToValueAtTime(280, t + 0.08);
+        gain.gain.setValueAtTime(0.12, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.08);
+        osc.start(t); osc.stop(t + 0.08);
+      } else if (type === 'score') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(660, t);
+        osc.frequency.setValueAtTime(880, t + 0.07);
+        gain.gain.setValueAtTime(0.18, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
+        osc.start(t); osc.stop(t + 0.22);
+      } else if (type === 'die') {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(380, t);
+        osc.frequency.exponentialRampToValueAtTime(60, t + 0.45);
+        gain.gain.setValueAtTime(0.2, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.45);
+        osc.start(t); osc.stop(t + 0.45);
+      }
+    } catch (e) { /* audio not available */ }
+  }
 
   function startGame() {
     if (animId) cancelAnimationFrame(animId);
@@ -1379,6 +1415,7 @@ function initFlappyMore() {
           if (!p.scored && p.x + game.pipeW < game.bird.x) {
             p.scored = true;
             game.score++;
+            playGameSound('score');
           }
 
           // Collision (slightly forgiving hitbox)
@@ -1386,7 +1423,7 @@ function initFlappyMore() {
           const bw = game.bird.w  - 12, bh = game.bird.h - 8;
           if (bx + bw > p.x && bx < p.x + game.pipeW) {
             if (by < p.topH || by + bh > p.topH + game.pipeGap) {
-              game.state = 'dead';
+              game.state = 'dead'; playGameSound('die');
               if (game.score > game.best) {
                 game.best = game.score;
                 sessionStorage.setItem('flappy_best', game.best);
@@ -1397,7 +1434,7 @@ function initFlappyMore() {
 
         // Floor / ceiling
         if (game.bird.y + game.bird.h > H || game.bird.y < 0) {
-          game.state = 'dead';
+          game.state = 'dead'; playGameSound('die');
           if (game.score > game.best) {
             game.best = game.score;
             sessionStorage.setItem('flappy_best', game.best);
@@ -1517,8 +1554,8 @@ function initFlappyMore() {
     // Click canvas: flap or restart
     canvas.onclick = () => {
       if (!game) return;
-      if (game.state === 'idle')    { game.state = 'playing'; game.bird.vy = game.flap; }
-      else if (game.state === 'playing') { game.bird.vy = game.flap; }
+      if (game.state === 'idle')    { game.state = 'playing'; game.bird.vy = game.flap; playGameSound('flap'); }
+      else if (game.state === 'playing') { game.bird.vy = game.flap; playGameSound('flap'); }
       else if (game.state === 'dead') {
         // Restart
         game.bird    = { x: 90, y: H/2 - 20, vy: 0, w: 55, h: 32 };
@@ -1527,6 +1564,7 @@ function initFlappyMore() {
         game.frame   = 0;
         game.state   = 'playing';
         game.bird.vy = game.flap;
+        playGameSound('flap');
       }
     };
 
