@@ -1300,3 +1300,12 @@ body.cursor-hover .cursor-dot { width: 14px; height: 14px; opacity: 0.6; }
   .tag-pulse, .currently-dot, .avail-dot { animation: none; }
   .np-bars span { animation: none; transform: scaleY(0.6); }
 }
+
+/* ---- Focus styles ---- */
+.contact-link:focus-visible,
+.human-card--clickable:focus-visible,
+#moreLogoBig:focus-visible,
+#musicIconBtn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
