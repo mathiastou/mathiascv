@@ -3,6 +3,26 @@
    ========================================================= */
 
 /* -------------------------------------------------------
+   FOCUS TRAP — reusable modal accessibility utility
+   ------------------------------------------------------- */
+function trapFocus(modal) {
+  const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+  function handler(e) {
+    if (e.key !== 'Tab') return;
+    const els = Array.from(modal.querySelectorAll(FOCUSABLE)).filter(el => !el.closest('[hidden]') && el.offsetParent !== null);
+    if (!els.length) { e.preventDefault(); return; }
+    const first = els[0], last = els[els.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  }
+  modal.addEventListener('keydown', handler);
+  return handler;
+}
+
+/* -------------------------------------------------------
    MUSIC — HTML5 Audio (MP3)
    ------------------------------------------------------- */
 let isPlaying = false;
@@ -373,15 +393,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const padelForm     = document.getElementById('padelForm');
   const padelStatus   = document.getElementById('padelStatus');
 
+  let _padelPrevFocus = null;
+  let _padelTrapHandler = null;
+
   function openPadelModal() {
+    _padelPrevFocus = document.activeElement;
     padelModal.hidden = false;
     document.body.style.overflow = 'hidden';
+    _padelTrapHandler = trapFocus(padelModal);
+    (padelClose || padelModal.querySelector('button, [tabindex]'))?.focus();
   }
   function closePadelModal() {
     padelModal.hidden = true;
     document.body.style.overflow = '';
     padelStatus.textContent = '';
     padelStatus.className = 'padel-status';
+    if (_padelTrapHandler) { padelModal.removeEventListener('keydown', _padelTrapHandler); _padelTrapHandler = null; }
+    _padelPrevFocus?.focus();
   }
 
   padelCard?.addEventListener('click', openPadelModal);
@@ -845,11 +873,17 @@ function initFlappyMore() {
   const moreBtn = document.getElementById('moreLogoBig');
   if (moreBtn) makeDraggable(moreBtn);
 
+  let _gamePrevFocus = null;
+  let _gameTrapHandler = null;
+
   // Open game on click (not after drag)
   moreBtn?.addEventListener('click', () => {
     if (moreBtn.dataset.skipClick) { delete moreBtn.dataset.skipClick; return; }
+    _gamePrevFocus = document.activeElement;
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
+    _gameTrapHandler = trapFocus(modal);
+    closeBtn?.focus();
     startGame();
   });
 
@@ -857,6 +891,8 @@ function initFlappyMore() {
     modal.hidden = true;
     document.body.style.overflow = '';
     if (animId) { cancelAnimationFrame(animId); animId = null; }
+    if (_gameTrapHandler) { modal.removeEventListener('keydown', _gameTrapHandler); _gameTrapHandler = null; }
+    _gamePrevFocus?.focus();
   }
 
   closeBtn?.addEventListener('click', closeGame);
