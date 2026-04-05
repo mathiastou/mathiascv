@@ -96,7 +96,7 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 ## other imporant other tasks:
 - [x] the linkedin id should not be displayed on the page - just linking to linkedin. 
 
-I like linkedin park - maybe implement that joke somehow when linkin park song is playing
+- [x] I like linkedin park - maybe implement that joke somehow when linkin park song is playing — done: mini player shows "…you mean LinkedIn Park? 🤝" in indigo text for 4 seconds whenever the song starts playing.
 
 - [x] the image resizing is not really clear unless you know it is opssible - maybe change the color of the resize button or make it clearer in some other way. — done: resize handle is now an amber dot (brand color) with 25% base opacity, scales up on hover, making it discoverable without being intrusive.
 
