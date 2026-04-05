@@ -96,16 +96,19 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
 ## other imporant other tasks:
 - [x] the linkedin id should not be displayed on the page - just linking to linkedin. 
 
-- [x] I like linkedin park - maybe implement that joke somehow when linkin park song is playing — implemented: mini player shows "…you mean LinkedIn Park? 🤝" in indigo italic for 4s whenever music starts playing
+I like linkedin park - maybe implement that joke somehow when linkin park song is playing
 
-the image resizing is not really clear unless you know it is opssible - maybe change the color of the resize button or make it clearer in some other way. 
+- [x] the image resizing is not really clear unless you know it is opssible - maybe change the color of the resize button or make it clearer in some other way. — done: resize handle is now an amber dot (brand color) with 25% base opacity, scales up on hover, making it discoverable without being intrusive.
 
-maybe mix the images around so it just not all images if me in the beginning together with my name - like i know it is my cv page - but it is a lot of me hehe (use only a little time on this)
+- [x] maybe mix the images around so it just not all images if me in the beginning together with my name - like i know it is my cv page - but it is a lot of me hehe (use only a little time on this) — done: swapped guitar (top-left ~440px) with off-the-clock collage (moved to ~1200px) so the guitar appears first, breaking up the cluster of profile photos at the top.
 
-a lot of the time the same animation vibe is used for clicking something - like it explodes out it with tthe same image or some icon - maybe adjust try out different cool animations for show off. (use only a little time on this)
+- [x] a lot of the time the same animation vibe is used for clicking something - like it explodes out it with tthe same image or some icon - maybe adjust try out different cool animations for show off. (use only a little time on this) — done: beer card now uses rising bubbles (slow float up with gentle sway); padel card shows a 🎾 arc before opening modal; sticky profile click now orbits emojis in a spiral ring instead of a burst.
 
 ##
-do mobile check again - like does it work on other screen sizes
+do mobile check again - like does it work on other screen sizes (quick check)
 
 ## 
 Based on the important tasks - anything else you need to revisit?
+
+##
+Hide some of the work - so it hidden somewhere to be expandend - remove the follow cursor animation on it

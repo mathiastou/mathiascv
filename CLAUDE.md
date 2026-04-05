@@ -76,8 +76,8 @@ Current layout order (left = 18px from left edge, right = 18px from right edge):
 
 | Right side | Left side |
 |---|---|
-| Hero photo @ ~80px | Off the clock @ ~440px |
-| Greece @ ~870px | Guitar 🎸 @ ~1200px |
+| Hero photo @ ~80px | Guitar 🎸 @ ~440px |
+| Greece @ ~870px | Off the clock @ ~1200px |
 | Belgium @ ~1750px | MORE button @ ~1900px |
 | Liverpool @ ~2650px | France @ ~2700px |
 | — | Jyllandsringen @ ~3500px |

@@ -295,7 +295,28 @@ document.addEventListener('DOMContentLoaded', () => {
       const r  = stickyProfile.getBoundingClientRect();
       const cx = r.left + r.width  / 2;
       const cy = r.top  + r.height / 2;
-      flyEmojis(cx, cy, ['✨','⭐','💫','🌟','👋'], 12);
+      // Orbit ring: emojis spiral outward from centre
+      const icons = ['✨','⭐','💫','🌟','👋'];
+      for (let i = 0; i < 8; i++) {
+        const el = document.createElement('span');
+        el.textContent = icons[i % icons.length];
+        el.style.cssText = `position:fixed;pointer-events:none;z-index:9997;user-select:none;font-size:1.1rem;`;
+        document.body.appendChild(el);
+        let t = 0;
+        const angle0 = (i / 8) * Math.PI * 2;
+        const speed  = 0.06 + Math.random() * 0.03;
+        const maxR   = 55 + Math.random() * 20;
+        (function spin(a0) {
+          return function tick() {
+            t++;
+            const r2 = Math.min(maxR, t * 2.2);
+            el.style.left    = (cx + Math.cos(a0 + t * speed) * r2) + 'px';
+            el.style.top     = (cy + Math.sin(a0 + t * speed) * r2) + 'px';
+            el.style.opacity = t < 40 ? '1' : Math.max(0, 1 - (t - 40) / 30);
+            if (t < 70) requestAnimationFrame(tick); else el.remove();
+          };
+        })(angle0)();
+      }
     });
   }
 
@@ -387,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   beerCard?.addEventListener('click', () => {
     const r  = beerCard.getBoundingClientRect();
-    flyEmojis(r.left + r.width / 2, r.top + r.height / 2, ['🍺','🍻','🍺'], 12);
+    risingBubbles(r.left + r.width / 2, r.top + r.height / 2, ['🍺','🍻','🫧','🍺'], 10);
 
     if (!beerDone) {
       beerDone = true;
@@ -430,7 +451,24 @@ document.addEventListener('DOMContentLoaded', () => {
     _padelPrevFocus?.focus();
   }
 
-  padelCard?.addEventListener('click', openPadelModal);
+  padelCard?.addEventListener('click', () => {
+    // Brief 🎾 arc animation before modal opens
+    const r  = padelCard.getBoundingClientRect();
+    const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    const ball = document.createElement('span');
+    ball.textContent = '🎾';
+    ball.style.cssText = `position:fixed;left:${cx}px;top:${cy}px;font-size:1.6rem;pointer-events:none;z-index:9997;`;
+    document.body.appendChild(ball);
+    let t = 0;
+    (function arc() {
+      t++;
+      ball.style.left    = (cx + t * 3.5) + 'px';
+      ball.style.top     = (cy - Math.sin(t / 18 * Math.PI) * 80) + 'px';
+      ball.style.opacity = t < 30 ? '1' : Math.max(0, 1 - (t - 30) / 20);
+      if (t < 50) requestAnimationFrame(arc); else ball.remove();
+    })();
+    openPadelModal();
+  });
   padelClose?.addEventListener('click', closePadelModal);
   padelBackdrop?.addEventListener('click', closePadelModal);
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && !padelModal.hidden) closePadelModal(); });
@@ -657,6 +695,41 @@ function flyEmojis(cx, cy, emojis, count) {
         if (frame < max) requestAnimationFrame(tick); else el.remove();
       })();
     }, i * 40);
+  }
+}
+
+
+/* =========================================================
+   UTILITY: Rising Bubbles (float upward with gentle sway — beer effect)
+   ========================================================= */
+function risingBubbles(cx, cy, emojis, count) {
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => {
+      const el = document.createElement('span');
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      const startX = cx + (Math.random() - 0.5) * 80;
+      const sz = 1.0 + Math.random() * 0.7;
+      el.style.cssText =
+        `position:fixed;left:${startX}px;top:${cy}px;` +
+        `font-size:${sz}rem;pointer-events:none;z-index:9997;user-select:none;line-height:1;`;
+      document.body.appendChild(el);
+
+      let t = 0;
+      const dur    = 90 + Math.random() * 50;
+      const swayAmp = 12 + Math.random() * 18;
+      const swayF   = 0.07 + Math.random() * 0.04;
+      const rise    = 2.5 + Math.random() * 1.5;
+
+      (function tick() {
+        t++;
+        const x = startX + Math.sin(t * swayF) * swayAmp;
+        const y = cy - t * rise;
+        el.style.left    = x + 'px';
+        el.style.top     = y + 'px';
+        el.style.opacity = Math.max(0, 1 - t / dur);
+        if (t < dur) requestAnimationFrame(tick); else el.remove();
+      })();
+    }, i * 90);
   }
 }
 
@@ -907,10 +980,10 @@ function initPhotoLayout() {
   place(liverpool,   2650,  true);
 
   // LEFT side — all items through place() so cursor stays accurate
-  // ~440px  — bottom of #hero / top of #what section; "Off the clock" collage shot
-  place(collage[0],  440,   false);
-  // ~1200px — bottom of #what / top of #work section; guitar (click to play music)
-  place(guitar,      1200,  false);
+  // ~440px  — bottom of #hero / top of #what section; guitar (click to play music — draws curiosity early)
+  place(guitar,      440,   false);
+  // ~1200px — bottom of #what / top of #work section; "Off the clock" collage shot
+  place(collage[0],  1200,  false);
   // ~1900px — mid #human section; MORE logo button (click to open Flappy Bird)
   place(moreBtn,     1900,  false);
   // Switch to class-based transform so hover scale works without translateY(-50%)
