@@ -66,10 +66,10 @@ The page currently reads too much like a LinkedIn profile. Strip the consulting-
   - Main contact form (`#contactForm`)
   - Padel challenge form (`#padelForm`)
   - Create a free account at formspree.io and use the generated form endpoint.
-- [ ] **Beer card click** — `#beerCard` has no click interaction. Consider: click opens a short fun fact or a toast notification ("It was a pale ale. 7.2%. Would recommend.").
-- [ ] **Drums card click** — `#drumsCard` similarly has no interaction. Could trigger a short drum-roll sound or a tooltip.
-- [ ] **OG / social meta tags** — add `<meta property="og:title">`, `og:description`, `og:image` (use `profileimage2022.jpg`) in `<head>` for better link previews when shared.
-- [ ] **Favicon** — no favicon is set. Add a simple one (could be the ☕ emoji rendered as SVG) via `<link rel="icon">` in `<head>`.
+- [x] **Beer card click** — `#beerCard` has no click interaction. Consider: click opens a short fun fact or a toast notification ("It was a pale ale. 7.2%. Would recommend.").
+- [x] **Drums card click** — `#drumsCard` similarly has no interaction. Could trigger a short drum-roll sound or a tooltip.
+- [x] **OG / social meta tags** — add `<meta property="og:title">`, `og:description`, `og:image` (use `profileimage2022.jpg`) in `<head>` for better link previews when shared.
+- [x] **Favicon** — no favicon is set. Add a simple one (could be the ☕ emoji rendered as SVG) via `<link rel="icon">` in `<head>`.
 
 ---
 
