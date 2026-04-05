@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hey, I'm Mathias. Digital Product & Business Developer based in Aarhus, Denmark." />
+  <title>Mathias Tougaard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Grain -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Smoke canvas -->
+  <canvas id="smokeCanvas" aria-hidden="true"></canvas>
+
+  <!-- Cursor dot -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- Background orbs -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Sticky profile (appears on scroll) -->
+  <div class="sticky-profile" id="stickyProfile" aria-hidden="true">
+    <img src="profileimage2022.jpg" alt="Mathias Tougaard" id="stickyProfileImg" />
+  </div>
+
+  <!-- Now Playing (bottom-left) -->
+  <!-- Audio -->
+  <audio id="audioPlayer" preload="none">
+    <source src="The%20Emptiness%20Machine%20(Official%20Music%20Video)%20-%20Linkin%20Park.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Mini music player card (hidden until guitar clicked) -->
+  <div class="mini-player glass-card" id="miniPlayer" hidden>
+    <button class="mp-close" id="mpClose" aria-label="Close">×</button>
+    <div class="mp-info">
+      <span class="mp-song">Emptiness Machine</span>
+      <span class="mp-artist">Linkin Park</span>
+    </div>
+    <div class="mp-progress-wrap">
+      <div class="mp-bar" id="mpBar"></div>
+    </div>
+    <button class="mp-play" id="musicPlayIcon" aria-label="Play / Pause">▶</button>
+  </div>
+
+  <!-- Floating music icon -->
+  <button class="music-icon-btn" id="musicIconBtn" aria-label="Emptiness Machine — Linkin Park">🎸</button>
+
+  <main>
+
+    <!-- ===================== HERO ===================== -->
+    <section id="hero" class="section hero-section" data-section-color="#f59e0b">
+      <div class="hero-content">
+        <div class="hero-tag reveal-up">
+          <span class="tag-pulse" aria-hidden="true"></span>
+          Aarhus, Denmark &nbsp;·&nbsp; 27
+        </div>
+
+        <h1 class="hero-name reveal-up" data-delay="0.1">
+          <span class="name-word">MATHIAS</span>
+          <span class="name-word name-accent">TOUGAARD</span>
+        </h1>
+
+        <p class="hero-subtitle reveal-up" data-delay="0.22">
+          Digital Product &nbsp;·&nbsp; Business Developer
+        </p>
+
+        <div class="hero-bubble reveal-up" data-delay="0.32">
+          "Good idea, let's do it!" 💡
+        </div>
+
+        <p class="hero-oneliner reveal-up" data-delay="0.4">
+          I turn messy business problems into clean systems,<br class="hero-br" />
+          working at the intersection of product, people, and execution.
+        </p>
+
+        <div class="scroll-cue reveal-up" data-delay="0.55" aria-hidden="true">
+          <div class="scroll-line"></div>
+          <span>scroll</span>
+        </div>
+      </div>
+
+      <!-- Hero profile polaroid (click = fun, not lightbox) -->
+      <div class="hero-photo reveal-up" data-delay="0.2">
+        <div class="polaroid draggable" style="--rot: 3deg;" id="heroPhoto">
+          <img src="profileimage2022.jpg" alt="Mathias Tougaard" loading="eager" />
+          <span class="polaroid-caption">That's me 👋</span>
+        </div>
+      </div>
+
+
+      <!-- Better Faster Stronger sticker -->
+      <div class="sticker sticker-bfs" aria-hidden="true" style="--rot: -8deg;">
+        <img src="better faster stronger black.png" alt="" />
+      </div>
+    </section>
+
+    <!-- ===================== WHAT I DO ===================== -->
+    <section id="what" class="section" data-section-color="#f59e0b">
+      <div class="container">
+        <div class="section-label reveal-up">What I Do</div>
+
+        <div class="do-grid">
+          <div class="do-card glass-card reveal-up" data-delay="0.0">
+            <div class="do-icon">🧠</div>
+            <span class="do-num">01</span>
+            <h3>Systems Thinking</h3>
+            <p>I map complex flows — platform migrations, replenishment chains, media pipelines — and find where the real leverage is hiding.</p>
+          </div>
+
+          <div class="do-card glass-card reveal-up" data-delay="0.12">
+            <div class="do-icon">⚡</div>
+            <span class="do-num">02</span>
+            <h3>Product Execution</h3>
+            <p>From idea to shipped. I sit between business need and technical delivery, making sure both sides stay honest and move fast.</p>
+          </div>
+
+          <div class="do-card glass-card reveal-up" data-delay="0.24">
+            <div class="do-icon">🔧</div>
+            <span class="do-num">03</span>
+            <h3>Killing Boring Work</h3>
+            <p>If it can be automated, simplified, or cut — it probably should be. Finding those moments and acting on them is what gets me going.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SELECTED WORK ===================== -->
+    <section id="work" class="section" data-section-color="#a3e635" style="position:relative;">
+      <!-- Big MORE logo — click for Flappy Bird -->
+      <button class="more-logo-decor" id="moreLogoBig" aria-label="Play Flappy MORE" title="Play Flappy MORE 🐦">
+        <img src="more..png" alt="MORE" />
+        <span class="more-logo-label">▶ Play</span>
+      </button>
+      <div class="container">
+        <div class="section-label reveal-up">Some of the Work</div>
+
+        <div class="work-grid">
+
+          <div class="work-card glass-card reveal-up magnetic" data-delay="0.0">
+            <div class="work-card-inner">
+              <div class="work-icon">🤖</div>
+              <h3 class="work-title">Media Bank · AI</h3>
+              <div class="work-tags">
+                <span class="wtag">AI tools</span>
+                <span class="wtag">SELECTED brand</span>
+                <span class="wtag">Live 2025</span>
+              </div>
+              <p class="work-desc">Digital asset management for SELECTED. Built using AI tools to get it done fast. Replaced manual, slow workflows with something that actually works. Live in production.</p>
+            </div>
+            <div class="work-hover-overlay"><span>Early 2025 · BESTSELLER · Still running 🟢</span></div>
+          </div>
+
+          <div class="work-card glass-card reveal-up magnetic" data-delay="0.1">
+            <div class="work-card-inner">
+              <div class="work-icon">🌍</div>
+              <h3 class="work-title">MORE B2B Platform</h3>
+              <div class="work-tags">
+                <span class="wtag">Wholesale</span>
+                <span class="wtag">12+ markets</span>
+                <span class="wtag">BESTSELLER</span>
+              </div>
+              <p class="work-desc">Next-gen B2B ordering platform. Norway to Dubai — rolling out markets, fixing friction, building the thing wholesale should actually feel like.</p>
+              <div class="work-logos">
+                <img src="more..png" alt="MORE" class="work-logo" loading="lazy" />
+              </div>
+            </div>
+            <div class="work-hover-overlay"><span>2022 — ongoing · ~8 teams · Still going 🟢</span></div>
+          </div>
+
+          <div class="work-card glass-card reveal-up magnetic" data-delay="0.2">
+            <div class="work-card-inner">
+              <div class="work-icon">⚡</div>
+              <h3 class="work-title">HYPEDROP</h3>
+              <div class="work-tags">
+                <span class="wtag">Drop model</span>
+                <span class="wtag">D2C</span>
+                <span class="wtag">Zero to live</span>
+              </div>
+              <p class="work-desc">Digital-first brand with weekly drops, 72-hour order windows, zero overproduction. Fast fashion but not terrible for everyone involved.</p>
+            </div>
+            <div class="work-hover-overlay"><span>2022 · NL, France, UK, Germany</span></div>
+          </div>
+
+          <div class="work-card glass-card reveal-up magnetic" data-delay="0.3">
+            <div class="work-card-inner">
+              <div class="work-icon">📦</div>
+              <h3 class="work-title">Replenishment Automation</h3>
+              <div class="work-tags">
+                <span class="wtag">B2B ops</span>
+                <span class="wtag">Less manual work</span>
+              </div>
+              <p class="work-desc">Redesigned how wholesale partners reorder stock. Less clicking, less emailing, less wasted time — just the right things happening automatically.</p>
+            </div>
+            <div class="work-hover-overlay"><span>2023 · BESTSELLER · Ongoing impact</span></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HUMAN ===================== -->
+    <section id="human" class="section human-section" data-section-color="#f472b6">
+      <div class="container">
+        <div class="section-label reveal-up">Outside the Office</div>
+
+        <blockquote class="human-statement reveal-up" data-delay="0.05">
+          "The stuff I do outside work is probably what explains the work stuff."
+        </blockquote>
+
+        <div class="human-grid">
+
+          <div class="human-card glass-card reveal-up human-card--clickable" data-delay="0.0" id="padelCard">
+            <div class="human-card-img">
+              <img src="padelballsatcourt.jfif" alt="Padel balls at court" loading="lazy" />
+            </div>
+            <div class="human-card-body">
+              <h4>🎾 Padel</h4>
+              <p>Competitive by nature. A sport that punishes poor positioning more than poor power — which sounds familiar.</p>
+            </div>
+          </div>
+
+          <div class="human-card glass-card reveal-up human-card--clickable" data-delay="0.1" id="runningCard">
+            <div class="human-card-img">
+              <img src="liketorun.png" alt="Running" loading="lazy" />
+            </div>
+            <div class="human-card-body">
+              <h4>🏃 Running</h4>
+              <p>Clears the head. Most of the best ideas show up somewhere between km 4 and km 8.</p>
+            </div>
+          </div>
+
+          <!-- Drums — interactive -->
+          <div class="human-card glass-card reveal-up human-card--clickable" data-delay="0.2" id="drumsCard">
+            <div class="human-card-img">
+              <img src="iplayabitofdrums.png" alt="Drum kit" loading="lazy" />
+            </div>
+            <div class="human-card-body">
+              <h4>🥁 Plays drums</h4>
+              <p id="drumsText">A bit. Not in a band. Just loud enough to annoy the neighbours.</p>
+            </div>
+          </div>
+
+          <!-- Beer — interactive -->
+          <div class="human-card glass-card reveal-up human-card--clickable" data-delay="0.3" id="beerCard">
+            <div class="human-card-img">
+              <img src="ilikebeerhavemademyown.png" alt="Homebrewed beer" loading="lazy" />
+            </div>
+            <div class="human-card-body">
+              <h4>🍺 Homebrewed beer</h4>
+              <p id="beerText">Made my own once. It was good. Might do it again.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Personal photo collage — BIGGER, draggable -->
+        <div class="human-collage reveal-up" data-delay="0.1">
+          <div class="polaroid draggable collage-item" style="--rot: -5deg;">
+            <img src="frompartyimage.png" alt="Off the clock" loading="lazy" />
+            <span class="polaroid-caption">Off the clock</span>
+          </div>
+          <div class="polaroid draggable collage-item" style="--rot: -3deg;">
+            <img src="drivingatjyllandsringing.png" alt="Jyllandsringen" loading="lazy" />
+            <span class="polaroid-caption">Jyllandsringen 🏎️</span>
+          </div>
+        </div>
+
+        <!-- Liverpool sticker — click for YNWA -->
+        <div class="sticker sticker-liverpool" id="liverpoolSticker" style="--rot: -6deg;" title="YNWA">
+          <img src="liverpoollogo.png" alt="Liverpool FC" />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== JOURNEY (CV) — BOTTOM ===================== -->
+    <section id="journey" class="section" data-section-color="#f59e0b">
+      <div class="container">
+        <div class="section-label reveal-up">The Story So Far</div>
+
+        <div class="timeline">
+
+          <!-- BESTSELLER -->
+          <div class="timeline-entry reveal-left" data-delay="0.0">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass-card">
+              <div class="tl-header">
+                <div class="tl-company">BESTSELLER</div>
+                <div class="tl-period">Nov 2021 — Present</div>
+              </div>
+              <div class="tl-role-badge">Business Developer / Innovation Lead</div>
+
+              <div class="tl-highlights">
+                <div class="tl-highlight">
+                  <span class="tl-icon">🏗️</span>
+                  <div><strong>MORE</strong> — BESTSELLER's new B2B sales platform. Rolled out across Norway, Sweden, Belgium, Greece, Turkey, Dubai, France, Finland and more.</div>
+                </div>
+                <div class="tl-highlight">
+                  <span class="tl-icon">🚀</span>
+                  <div><strong>HYPEDROP</strong> — Digital-first drop brand. Weekly collections, 72-hour order windows, zero overproduction. From zero to live.</div>
+                </div>
+                <div class="tl-highlight">
+                  <span class="tl-icon">🤖</span>
+                  <div><strong>Media Bank · AI</strong> — Built an AI-powered digital asset tool for SELECTED. Shipped early 2025, live in production.</div>
+                </div>
+                <div class="tl-highlight">
+                  <span class="tl-icon">📦</span>
+                  <div><strong>Replenishment</strong> — Automated B2B ordering flows so wholesale partners stop doing things manually that machines should handle.</div>
+                </div>
+                <div class="tl-highlight">
+                  <span class="tl-icon">🔄</span>
+                  <div><strong>EXTRANET → DIRECT</strong> — Helped close two legacy wholesale platforms. Migrations, stakeholders, the whole thing.</div>
+                </div>
+              </div>
+
+              <!-- Journey photos — bigger, draggable -->
+              <div class="journey-photos">
+                <div class="polaroid draggable" style="--rot: -4deg;">
+                  <img src="imageofworkshopinbelgiumformore.png" alt="MORE workshop Belgium" loading="lazy" />
+                  <span class="polaroid-caption">Belgium 🇧🇪</span>
+                </div>
+                <div class="polaroid draggable" style="--rot: 3deg;">
+                  <img src="moreworkshopingreece.png" alt="MORE workshop Greece" loading="lazy" />
+                  <span class="polaroid-caption">Greece 🇬🇷</span>
+                </div>
+                <div class="polaroid draggable" style="--rot: -2deg;">
+                  <img src="photoofmathiasinmoret-shirtinfrance.png" alt="MORE t-shirt France" loading="lazy" />
+                  <span class="polaroid-caption">France 🇫🇷</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lasertryk -->
+          <div class="timeline-entry reveal-left" data-delay="0.1">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass-card">
+              <div class="tl-header">
+                <div class="tl-company">Lasertryk.dk</div>
+                <div class="tl-period">Aug 2018 — Nov 2021</div>
+              </div>
+              <div class="tl-role-badge">Shipping Specialist → Student Worker</div>
+              <div class="tl-highlights">
+                <div class="tl-highlight">
+                  <span class="tl-icon">📬</span>
+                  <div>Started in print-on-demand and special packaging. Learnt how real operations work when volume scales fast and margin is thin.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="timeline-entry reveal-left" data-delay="0.2">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass-card">
+              <div class="tl-header">
+                <div class="tl-company">Business Academy Aarhus</div>
+                <div class="tl-period">Aug 2020 — Dec 2023</div>
+              </div>
+              <div class="tl-role-badge">Bachelor — Economics &amp; IT</div>
+              <div class="tl-highlights">
+                <div class="tl-highlight">
+                  <span class="tl-icon">🎓</span>
+                  <div>Combined business and tech — because doing one without the other never made sense to me. Did my internship at BESTSELLER while studying.</div>
+                </div>
+              </div>
+              <div class="tl-grade">
+                <span class="grade-label">Final grade</span>
+                <span class="grade-value">12</span>
+                <span class="grade-note">— top of scale</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="section" data-section-color="#f59e0b">
+      <div class="container">
+        <div class="section-label reveal-up">Get in Touch</div>
+
+        <h2 class="contact-heading reveal-up" data-delay="0.05">
+          Let's build<br />
+          <span class="contact-accent">something</span>.
+        </h2>
+
+        <div class="availability reveal-up" data-delay="0.1">
+          <span class="avail-dot" aria-hidden="true"></span>
+          Open for conversations &nbsp;·&nbsp; Usually reply within 24h
+        </div>
+
+        <div class="contact-layout">
+
+          <div class="contact-links reveal-up" data-delay="0.15">
+            <a href="mailto:mathiastougaard99@gmail.com" class="contact-link magnetic">
+              <span class="contact-link-label">Email</span>
+              <span class="contact-link-value">mathiastougaard99@gmail.com</span>
+              <span class="contact-link-arrow">↗</span>
+            </a>
+            <a href="https://www.linkedin.com/in/mathias-tougaard-5768aa126/" target="_blank" rel="noopener noreferrer" class="contact-link magnetic">
+              <span class="contact-link-label">LinkedIn</span>
+              <span class="contact-link-value">mathias-tougaard-5768aa126</span>
+              <span class="contact-link-arrow">↗</span>
+            </a>
+            <a href="https://www.instagram.com/mathiastougaard/" target="_blank" rel="noopener noreferrer" class="contact-link magnetic">
+              <span class="contact-link-label">Instagram</span>
+              <span class="contact-link-value">@mathiastougaard</span>
+              <span class="contact-link-arrow">↗</span>
+            </a>
+          </div>
+
+          <div class="contact-form-wrap glass-card reveal-up" data-delay="0.2">
+            <!--
+              SETUP: formspree.io → create form → replace REPLACE_WITH_FORMSPREE_ID
+            -->
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST" novalidate>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="What's on your mind?" required></textarea>
+              </div>
+              <button type="submit" class="form-submit magnetic">
+                <span class="submit-text">Send it</span>
+                <span class="submit-arrow">→</span>
+              </button>
+              <div class="form-status" id="formStatus" aria-live="polite"></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+      <a href="https://www.linkedin.com/in/mathias-tougaard-5768aa126/" target="_blank" rel="noopener noreferrer" class="coffee-link reveal-up" data-delay="0.1">
+        <span class="coffee-icon">☕</span>
+        <span class="coffee-text">I just want to have a cup of coffee</span>
+      </a>
+
+      <footer class="site-footer">
+        <span>Mathias Tougaard &nbsp;·&nbsp; 2026</span>
+        <span>Aarhus, Denmark</span>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- Flappy MORE game modal -->
+  <div class="game-modal" id="gameModal" hidden>
+    <div class="game-backdrop" id="gameBackdrop"></div>
+    <div class="game-content">
+      <button class="game-close" id="gameClose" aria-label="Close game">×</button>
+      <canvas id="flappyCanvas" width="420" height="560"></canvas>
+    </div>
+  </div>
+
+  <!-- Padel challenge modal -->
+  <div class="padel-modal" id="padelModal" hidden>
+    <div class="padel-backdrop" id="padelBackdrop"></div>
+    <div class="padel-content glass-card">
+      <button class="game-close" id="padelClose" aria-label="Close">×</button>
+      <div class="padel-modal-header">
+        <span class="padel-ball">🎾</span>
+        <h3>Challenge me to a padel game</h3>
+        <p>Drop your name and a message — winner buys drinks.</p>
+      </div>
+      <form class="padel-form" id="padelForm" action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+        <input type="hidden" name="_subject" value="Padel challenge! 🎾" />
+        <div class="padel-field">
+          <input type="text" name="name" placeholder="Your name" required autocomplete="off" />
+        </div>
+        <div class="padel-field">
+          <input type="email" name="email" placeholder="Your email" required autocomplete="off" />
+        </div>
+        <div class="padel-field">
+          <textarea name="message" placeholder="When are you free? Where do you play? 🏟️" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="padel-submit">Send the challenge 🎾</button>
+        <p class="padel-status" id="padelStatus"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
